@@ -132,6 +132,29 @@ export interface Translations {
     curatedSourceDesc: string
     boothSubtitle: string
   }
+  brandIdentity: {
+    sectionEyebrow: string
+    sectionTitle: string
+    sectionSubtitle: string
+    pageCardChip: string
+    storefrontChip: string
+    pageCategory: string
+    followersLabel: string
+    scheduleHeading: string
+    visitPageBtn: string
+    messagePageBtn: string
+    pageHelperCopy: string
+    storefrontTitle: string
+    storefrontDesc: string
+    viewTodayLocationBtn: string
+    viewLatestPostBtn: string
+    pointsHeading: string
+    pointSignboard: string
+    pointDisplayCabinet: string
+    pointLogo: string
+    pointPhone: string
+    officialBadge: string
+  }
   about: {
     sectionEyebrow: string
     sectionTitle: string
@@ -387,6 +410,32 @@ export const translations: Record<Language, Translations> = {
       curatedSourceDesc:
         'คัดลอกจากโพสต์ทางการของเพจ ฉันชอบกลิ่นเนย โดยผู้ดูแลระบบ (ไม่ได้ใช้การ Scrape และยังไม่มีการเชื่อมต่อ Graph API)',
       boothSubtitle: 'ค้นหาป้ายร้านและเคาน์เตอร์ขนมอบได้ที่ล็อกนี้',
+    },
+    brandIdentity: {
+      sectionEyebrow: 'BRAND & STOREFRONT RECOGNITION',
+      sectionTitle: 'รู้จักร้านก่อนชิม',
+      sectionSubtitle:
+        'ช่วยให้ลูกค้าจดจำเอกลักษณ์เพจร้าน และมองหาบูธจริงได้ง่ายเมื่อเดินทางไปถึงตลาด',
+      pageCardChip: 'PAGE IDENTITY',
+      storefrontChip: 'REAL STOREFRONT',
+      pageCategory: 'เบเกอรี่',
+      followersLabel: 'ผู้ติดตาม 2.7 พันคน',
+      scheduleHeading: 'ตารางวันจำหน่ายประจำตลาด',
+      visitPageBtn: 'ดูเพจบน Facebook ↗',
+      messagePageBtn: 'ส่งข้อความหาเพจ ↗',
+      pageHelperCopy:
+        'สำหรับลูกค้าที่ไม่เคยซื้อ สามารถดูข้อมูลเพจร้านและติดตามการอัปเดตวันขายได้จาก Facebook',
+      storefrontTitle: 'ภาพหน้าร้านจริง',
+      storefrontDesc:
+        'ภาพบูธจริงของร้าน เพื่อช่วยให้ลูกค้าจดจำและมองหาร้านได้ง่ายเมื่อไปถึงตลาด',
+      viewTodayLocationBtn: 'ดูตำแหน่งขายวันนี้ ↓',
+      viewLatestPostBtn: 'ดูประกาศล่าสุดจากเพจ ↓',
+      pointsHeading: 'จุดสังเกตหน้าร้านเมื่อไปถึง:',
+      pointSignboard: 'ป้ายร้าน "ฉันชอบกลิ่นเนย" ตัวอักษรแดงสลับเหลืองสะดุดตา',
+      pointDisplayCabinet: 'ตู้กระจกกรอบไม้คลาสสิก โชว์ทาร์ตและขนมอบสดใหม่ด้านหน้า',
+      pointLogo: 'สัญลักษณ์โลโก้ร้านรูปคุกกี้และหมวกเชฟบนป้ายร้าน',
+      pointPhone: 'เบอร์โทรติดต่อ 083-646-3651 พร้อมข้อความเนยฝรั่งเศสแท้ 100%',
+      officialBadge: 'เพจทางการ',
     },
     about: {
       sectionEyebrow: 'ABOUT THE BAKERY',
@@ -675,6 +724,32 @@ export const translations: Record<Language, Translations> = {
       curatedSourceDesc:
         'Curated manually from official Facebook post of Chan Chop Klin Noei by admin (No automated scraping, no live Graph API connection).',
       boothSubtitle: 'Look for our bakery sign and display counter at this booth',
+    },
+    brandIdentity: {
+      sectionEyebrow: 'BRAND & STOREFRONT RECOGNITION',
+      sectionTitle: 'Know the Bakery Before You Visit',
+      sectionSubtitle:
+        'Helping first-time visitors recognize the official Facebook page and identify the real market booth with confidence.',
+      pageCardChip: 'PAGE IDENTITY',
+      storefrontChip: 'REAL STOREFRONT',
+      pageCategory: 'Bakery',
+      followersLabel: '2.7K Followers',
+      scheduleHeading: 'Regular Market Selling Schedule',
+      visitPageBtn: 'Visit Facebook Page ↗',
+      messagePageBtn: 'Message on Facebook ↗',
+      pageHelperCopy:
+        'For first-time customers, this page card helps identify the bakery and follow event/sales updates on Facebook.',
+      storefrontTitle: 'Real Storefront',
+      storefrontDesc:
+        'This real booth photo helps customers recognize the bakery more easily when arriving at the market.',
+      viewTodayLocationBtn: 'View Today’s Location ↓',
+      viewLatestPostBtn: 'Latest Announcements ↓',
+      pointsHeading: 'Storefront recognition markers upon arrival:',
+      pointSignboard: 'Signboard: "Chan Chop Klin Noei" with vivid red and warm yellow lettering',
+      pointDisplayCabinet: 'Classic wooden glass showcase displaying freshly baked tarts & pastries',
+      pointLogo: 'Bakery logo featuring cookie illustration & chef hat on the main banner',
+      pointPhone: 'Phone number 083-646-3651 and "100% Pure French Butter" emblem',
+      officialBadge: 'Official Page',
     },
     about: {
       sectionEyebrow: 'ABOUT THE BAKERY',

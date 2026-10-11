@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Navbar } from './components/Navbar'
 import { BakeryHero } from './components/BakeryHero'
+import { BakeryIdentitySection } from './components/BakeryIdentitySection'
 import { BakeryPopUpLocation } from './components/BakeryPopUpLocation'
 import { FeaturedCatalog } from './components/FeaturedCatalog'
 import { ProductDetailStage } from './components/ProductDetailStage'
@@ -97,6 +98,12 @@ export default function App() {
           lang={lang}
           t={t}
           onExploreMenu={handleExploreMenu}
+        />
+
+        {/* 2.2 Brand Recognition: Page Identity & Real Storefront Booth */}
+        <BakeryIdentitySection
+          lang={lang}
+          t={t}
         />
 
         {/* 2.5 Pop-up Schedule & Booth Location (Phase 4.3) */}
