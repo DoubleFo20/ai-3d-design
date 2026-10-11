@@ -1,0 +1,110 @@
+/* ATELIER 3D — Haute Boulangerie & Viennoiserie
+   Editorial Minimal Design System Tokens
+*/
+
+:root {
+  /* Editorial Color Palette */
+  --bg-primary: #F3EFE7;
+  --bg-surface: #EAE4D7;
+  --bg-card: rgba(255, 255, 255, 0.65);
+  --bg-card-hover: rgba(255, 255, 255, 0.85);
+  --bg-pill: rgba(37, 35, 31, 0.05);
+  --bg-pill-active: #25231F;
+
+  --text-primary: #25231F;
+  --text-secondary: #6B655D;
+  --text-muted: #8E877C;
+  --text-inverted: #F3EFE7;
+
+  /* Accent: Baked Crust / Terracotta */
+  --accent: #A44B2F;
+  --accent-hover: #8C3E25;
+  --accent-light: #DF744A;
+  --accent-subtle: rgba(164, 75, 47, 0.08);
+  --accent-border: rgba(164, 75, 47, 0.28);
+
+  /* Borders & Grid lines */
+  --border-hairline: rgba(37, 35, 31, 0.10);
+  --border-strong: rgba(37, 35, 31, 0.22);
+  --border-accent: rgba(164, 75, 47, 0.4);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Garamond, 'Didot', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Shadows */
+  --shadow-card: 0 12px 32px -8px rgba(37, 35, 31, 0.06);
+  --shadow-pedestal: 0 24px 48px -12px rgba(37, 35, 31, 0.12);
+  --shadow-pill: 0 4px 12px rgba(37, 35, 31, 0.04);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--bg-primary);
+  /* Subtle organic paper grain overlay */
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(164, 75, 47, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(164, 75, 47, 0.03) 0%, transparent 45%);
+}
+
+/* Base Editorial Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* Accessibility focus ring */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
