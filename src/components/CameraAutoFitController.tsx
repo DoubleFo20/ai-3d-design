@@ -59,8 +59,9 @@ export const CameraAutoFitController: React.FC<CameraAutoFitControllerProps> = (
     // Horizontal FOV half-angle in radians
     const hFovRad = Math.atan(Math.tan(vFovRad) * aspect)
 
-    // Margin factor: 1.25 = generous breathing margin preventing any badge overlap
-    const marginFactor = 1.25
+    // Margin factor: calibrated so pastry is prominent and fills the viewport heroically
+    // without clipping the plinth or overlapping UI badges
+    const marginFactor = aspect < 1.0 ? 1.15 : 1.06
 
     // Calculate required camera distance for both vertical and horizontal view cones
     const distV = (radius / Math.sin(vFovRad)) * marginFactor
@@ -70,9 +71,9 @@ export const CameraAutoFitController: React.FC<CameraAutoFitControllerProps> = (
     // Editorial 3/4 perspective beauty angle direction (elevation ~28°, azimuth ~43°)
     const viewDirection = new THREE.Vector3(1.12, 0.82, 1.22).normalize()
 
-    // Calculated camera position with generous headroom
+    // Calculated camera position with calibrated headroom
     const framingTarget = center.clone()
-    framingTarget.y -= 0.08 // Slight lower-third aesthetic center
+    framingTarget.y -= 0.04 // Calibrated lower-third aesthetic center
 
     const camPosition = new THREE.Vector3()
       .copy(framingTarget)

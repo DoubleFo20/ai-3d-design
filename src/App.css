@@ -549,6 +549,83 @@
   cursor: grabbing;
 }
 
+/* Refined Editorial 3D Asset Streaming Loader */
+.editorial-3d-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(246, 243, 238, 0.78);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  pointer-events: none;
+}
+
+.editorial-3d-loader.fading-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-light, #E2DDD5);
+  box-shadow: 0 8px 24px rgba(37, 35, 31, 0.06);
+  border-radius: 4px;
+}
+
+.loader-spinner-ring {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(164, 75, 47, 0.15);
+  border-top-color: var(--accent, #A44B2F);
+  border-radius: 50%;
+  animation: loader-spin 0.85s linear infinite;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.loader-percent {
+  font-weight: 600;
+  color: var(--accent, #A44B2F);
+}
+
+.loader-bar-track {
+  width: 140px;
+  height: 2px;
+  background-color: rgba(37, 35, 31, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  height: 100%;
+  background-color: var(--accent, #A44B2F);
+  transition: width 0.2s ease-out;
+}
+
 /* Drag Interaction Hint */
 .drag-hint-pill {
   position: absolute;

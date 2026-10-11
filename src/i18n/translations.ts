@@ -48,6 +48,7 @@ export interface Translations {
     wireframeMesh: string
     wireframeShaded: string
     resetView: string
+    loading3D: string
   }
   demoModal: {
     badge: string
@@ -162,10 +163,10 @@ export const translations: Record<Language, Translations> = {
     viewer: {
       disclaimerTitle: 'PROTOTYPE 3D GEOMETRY — CONCEPT STUDY',
       disclaimerSub:
-        'Procedural Three.js geometry placeholder • Architecture ready for GLB production models',
-      caneleAssetTitle: 'PRODUCTION 3D ASSET — CANELÉ DE BORDEAUX (PHASE 2)',
+        'Procedural Three.js geometry placeholder • Intake slot reserved for photogrammetry scan GLB',
+      caneleAssetTitle: 'INTERIM PBR PRODUCTION MODEL — CANELÉ DE BORDEAUX (PHASE 2)',
       caneleAssetSub:
-        'Blender 4.2 LTS PBR model • 2K caramelized albedo, normal & beeswax roughness maps',
+        'Engineered Blender 4.2 LTS PBR model (~85% photoreal) • Pipeline ready for Photogrammetry Scan intake',
       dragHint: 'DRAG TO ROTATE 360° • SCROLL TO ZOOM',
       autoSpin: 'AUTO-SPIN',
       autoSpinOn: 'ON',
@@ -174,6 +175,7 @@ export const translations: Record<Language, Translations> = {
       wireframeMesh: 'MESH',
       wireframeShaded: 'SHADED',
       resetView: 'RESET VIEW',
+      loading3D: 'STREAMING 3D ASSET',
     },
     demoModal: {
       badge: 'PHASE 1 DEMO MODE • SIMULATION ONLY',
@@ -318,10 +320,10 @@ export const translations: Record<Language, Translations> = {
     viewer: {
       disclaimerTitle: 'เรขาคณิต 3D ต้นแบบ — ศึกษาแนวคิดผลิตภัณฑ์',
       disclaimerSub:
-        'โมเดลทดลอง Three.js (Placeholder) • เตรียมสถาปัตยกรรมพร้อมสลับเป็นโมเดล GLB สินค้าจริง',
-      caneleAssetTitle: 'โมเดล 3D สินค้าจริง — CANELÉ DE BORDEAUX (PHASE 2)',
+        'โมเดลทดลอง Three.js (Placeholder) • เตรียมช่องรับโมเดล Photogrammetry GLB สำหรับสินค้าจริง',
+      caneleAssetTitle: 'โมเดล PBR ชั่วคราว — CANELÉ DE BORDEAUX (PHASE 2)',
       caneleAssetSub:
-        'โมเดล PBR ส่งออกจาก Blender 4.2 LTS • แผนที่เนื้อสัมผัสคาราเมล นอร์มอล และไขผึ้ง 2K',
+        'โมเดล PBR ส่งออกจาก Blender 4.2 LTS (ประมาณการความสมจริง ~85%) • ท่อส่งข้อมูลพร้อมรับ 3D Scan จริง',
       dragHint: 'ลากเพื่อหมุน 360° • สองนิ้วเพื่อซูม',
       autoSpin: 'หมุนอัตโนมัติ',
       autoSpinOn: 'เปิด',
@@ -330,6 +332,7 @@ export const translations: Record<Language, Translations> = {
       wireframeMesh: 'โครงลวด',
       wireframeShaded: 'พื้นผิวจริง',
       resetView: 'รีเซ็ตมุมกล้อง',
+      loading3D: 'กำลังโหลดสินทรัพย์ 3D',
     },
     demoModal: {
       badge: 'โหมดทดลองต้นแบบ PHASE 1 • การจำลองการทำงาน',

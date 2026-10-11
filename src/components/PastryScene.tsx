@@ -6,12 +6,14 @@ import {
   ContactShadows,
   PerspectiveCamera,
   Environment,
+  AdaptiveDpr,
 } from '@react-three/drei'
 import * as THREE from 'three'
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { PastryModelRenderer } from './PastryModelRenderer'
 import { CameraAutoFitController } from './CameraAutoFitController'
 import { WebGLFallback } from './WebGLFallback'
+import { Editorial3DLoader } from './Editorial3DLoader'
 import type { Translations } from '../i18n/translations'
 
 export type PastryType = 'canele' | 'sourdough' | 'brioche'
@@ -150,6 +152,7 @@ export const PastryScene: React.FC<PastrySceneProps> = ({
   t,
 }) => {
   const [hasWebGL] = useState(() => isWebGLSupported())
+  const [isContextLost, setIsContextLost] = useState(false)
   const [wireframe, setWireframe] = useState(false)
   const [autoRotate, setAutoRotate] = useState(true)
   const [hasInteracted, setHasInteracted] = useState(false)
@@ -168,8 +171,16 @@ export const PastryScene: React.FC<PastrySceneProps> = ({
     }
   }
 
-  if (!hasWebGL) {
-    return <WebGLFallback message="WebGL support is disabled or unavailable. Showing static architectural blueprint." />
+  if (!hasWebGL || isContextLost) {
+    return (
+      <WebGLFallback
+        message={
+          isContextLost
+            ? 'WebGL hardware graphics context was lost. Hardware acceleration paused.'
+            : 'WebGL support is disabled or unavailable. Showing static architectural blueprint.'
+        }
+      />
+    )
   }
 
   return (
@@ -227,6 +238,9 @@ export const PastryScene: React.FC<PastrySceneProps> = ({
 
       {/* 3D Canvas Stage */}
       <div className="canvas-container">
+        {/* Editorial 3D Asset Streaming Loader Overlay */}
+        <Editorial3DLoader label={t.viewer.loading3D} />
+
         <CanvasErrorBoundary
           fallback={<WebGLFallback message="Failed to initialize 3D context." />}
         >
@@ -240,7 +254,24 @@ export const PastryScene: React.FC<PastrySceneProps> = ({
               toneMapping: THREE.ACESFilmicToneMapping,
               toneMappingExposure: 1.05,
             }}
+            onCreated={({ gl }) => {
+              const canvas = gl.domElement
+              const handleLost = (event: Event) => {
+                event.preventDefault()
+                console.warn('WebGL context lost detected on canvas')
+                setIsContextLost(true)
+              }
+              const handleRestored = () => {
+                console.info('WebGL context restored')
+                setIsContextLost(false)
+              }
+              canvas.addEventListener('webglcontextlost', handleLost)
+              canvas.addEventListener('webglcontextrestored', handleRestored)
+            }}
           >
+            {/* Dynamic performance scaling during rapid drag interactions */}
+            <AdaptiveDpr pixelated={false} />
+
             {/* Base perspective camera */}
             <PerspectiveCamera makeDefault fov={40} position={[3.5, 2.8, 4.5]} />
 
