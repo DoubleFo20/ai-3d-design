@@ -21,6 +21,8 @@ export interface Translations {
     atelier: string
     hearthActive: string
     reserveBtn: string
+    facebookLink: string
+    prototypeBadge: string
   }
   hero: {
     canele: PastryTranslation
@@ -29,11 +31,83 @@ export interface Translations {
     reserveBtn: string
     exploreBtn: string
     bakerSignoff: string
+    badge: string
+    eyebrow: string
+    titleMain: string
+    titleAccent: string
+    description: string
+    orderFbBtn: string
+    exploreMenuBtn: string
+    specBatch: string
+    specButter: string
+    specHearth: string
   }
   tabs: {
     canele: string
     sourdough: string
     brioche: string
+  }
+  catalog: {
+    sectionEyebrow: string
+    sectionTitle: string
+    sectionSubtitle: string
+    photoSlotNotice: string
+    demoBadge: string
+    inquirePrice: string
+    viewDetailBtn: string
+    view3DBtn: string
+    viewGalleryBtn: string
+    allFilter: string
+    croissantFilter: string
+    danishFilter: string
+    pastryFilter: string
+    intakeGuide: string
+  }
+  detailStage: {
+    sectionEyebrow: string
+    sectionTitle: string
+    view3DLabel: string
+    viewPhotoLabel: string
+    noGLBNotice: string
+    hasGLBNotice: string
+    inquireFbBtn: string
+    intakeSlotLabel: string
+    specsHeading: string
+    verificationTitle: string
+    verificationDesc: string
+  }
+  facebookFeed: {
+    sectionEyebrow: string
+    sectionTitle: string
+    sectionSubtitle: string
+    curatedBadge: string
+    curatedDesc: string
+    openPostBtn: string
+    visitPageBtn: string
+    postedOn: string
+  }
+  about: {
+    sectionEyebrow: string
+    sectionTitle: string
+    leadStory: string
+    storyP1: string
+    storyP2: string
+    pillar1Title: string
+    pillar1Desc: string
+    pillar2Title: string
+    pillar2Desc: string
+    pillar3Title: string
+    pillar3Desc: string
+    disclaimerTitle: string
+    disclaimerDesc: string
+  }
+  contact: {
+    sectionEyebrow: string
+    sectionTitle: string
+    sectionSubtitle: string
+    messengerBtn: string
+    facebookPageBtn: string
+    inquiryNote: string
   }
   viewer: {
     disclaimerTitle: string
@@ -91,82 +165,394 @@ export interface Translations {
 }
 
 export const translations: Record<Language, Translations> = {
-  en: {
+  th: {
     nav: {
-      brandTitle: 'ATELIER 3D',
-      brandSub: 'HAUTE BOULANGERIE • PARIS',
-      collection: 'La Collection',
-      savoirFaire: 'Savoir-Faire',
-      heritage: 'Heritage Wheat',
-      atelier: "L'Atelier",
-      hearthActive: 'HEARTH ACTIVE • 245°C',
-      reserveBtn: 'RESERVE BATCH',
+      brandTitle: 'ฉันชอบกลิ่นเนย',
+      brandSub: 'ครัวซองต์และขนมอบเนยสดแท้ • กรุงเทพฯ',
+      collection: 'เมนูขนมอบ',
+      savoirFaire: 'ความตั้งใจอบ',
+      heritage: 'อัปเดตจากเพจ',
+      atelier: 'เกี่ยวกับร้าน',
+      hearthActive: 'เตาอบร้อน • พร้อมเสิร์ฟความสด',
+      reserveBtn: 'สอบถามรอบอบ',
+      facebookLink: 'เพจ Facebook ↗',
+      prototypeBadge: 'CONCEPT PROTOTYPE',
     },
     hero: {
+      badge: 'ต้นแบบแนวคิดเว็บไซต์ • CONCEPT PROTOTYPE',
+      eyebrow: 'ARTISANAL CROISSANT & VIENNOISERIE',
+      titleMain: 'หอมกรุ่นกลิ่นเนยแท้,',
+      titleAccent: 'ทุกชั้นของความประณีต.',
+      description:
+        'แรงบันดาลใจจากเพจ "ฉันชอบกลิ่นเนย" ร้านขนมอบที่คราฟต์ครัวซองต์และเดนิชด้วยเนยสดคุณภาพสูง แป้งพับหลายชั้นกรอบฟูสอดรับกับไส้ครีมและผลไม้สดอย่างลงตัว (ข้อมูลและภาพในเว็บนี้จัดทำขึ้นเพื่อการศึกษาการออกแบบดิจิทัลและ 3D ไม่ใช่เว็บไซต์ทางการ)',
+      orderFbBtn: 'ติดต่อสั่งซื้อทาง Facebook ↗',
+      exploreMenuBtn: 'ชมเมนูขนมอบแนะนำ',
+      specBatch: 'อบสดใหม่ตามรอบ',
+      specButter: 'เนยสดแท้คุณภาพสูง',
+      specHearth: 'คราฟต์ด้วยมือทุกชิ้น',
       canele: {
-        subtitle: 'N° 01 • SPÉCIALITÉ BORDELAISE',
+        subtitle: 'โมเดล 3D ศึกษา • กานาเล เดอ บอร์โด',
+        title: 'คาราเมลน้ำตาลไหม้กรอบ,',
+        italicWord: 'สอดไส้คัสตาร์ดนุ่มละมุน.',
+        description: 'อบในพิมพ์ทองแดงเคลือบไขผึ้งธรรมชาติ ผิวนอกสีมะฮอกกานีกรอบหอม สอดไส้คัสตาร์ดวานิลลามาดากัสการ์และรัมบ่ม',
+        specs: [
+          { label: 'พิมพ์ทองแดงแท้', value: '65 นาที ที่ 230°C' },
+          { label: 'การเคลือบเงา', value: 'ไขผึ้งธรรมชาติและน้ำตาลอ้อย' },
+          { label: 'การพักแป้ง', value: 'บ่มแป้ง 48 ชั่วโมง' },
+        ],
+        tastingNote: '“สัมผัสแรกกรอบคาราเมล ตามด้วยเนื้อคัสตาร์ดหอมวานิลลาละมุนลิ้น”',
+        dailyYield: 'จำกัดจำนวนต่อรอบอบ',
+        formMetric: 'รูปทรง: 12 ร่องคานาเล (12 FLUTES)',
+      },
+      sourdough: {
+        subtitle: 'เรขาคณิตศึกษา • ปัง โอ เลอแว็ง',
+        title: 'เปลือกกรอบลายผ่า,',
+        italicWord: 'เนื้อในฟูโปร่งดั่งรวงผึ้ง.',
+        description: 'ขนมปังซาวโดว์หมักยีสต์ธรรมชาติ 100% หมักบ่มข้ามคืน ดึงรสเปรี้ยวละมุนและกลิ่นหอมของข้าวสาลีโบราณ',
+        specs: [
+          { label: 'การหมักบ่ม', value: '36 ชั่วโมง อุณหภูมิควบคุม' },
+          { label: 'ระดับความชื้น', value: '82% ไฮเดรชันสูง' },
+          { label: 'การอบบนหินเตา', value: 'อบไอน้ำ 245°C' },
+        ],
+        tastingNote: '“รสเปรี้ยวผลไม้อ่อนโยน เนื้อหนึบฉ่ำน้ำ และเปลือกกรอบกลิ่นคาราเมลข้าวสาลี”',
+        dailyYield: 'หมักบ่มจำกัดต่อวัน',
+        formMetric: 'รูปทรง: ทรงรีผ่าหลังเต่า (BÂTARD)',
+      },
+      brioche: {
+        subtitle: 'เรขาคณิตศึกษา • บริออช แทรซเซ',
+        title: 'เส้นใยเนยนุ่มดั่งแพรไหม,',
+        italicWord: 'มงกุฎเปียสีทองอร่าม.',
+        description: 'บริออชสูตรฝรั่งเศสดั้งเดิม นวดด้วยเนยแท้ในสัดส่วนสูง ถักเปียประณีต เปลือกนอกสีทองเงางาม',
+        specs: [
+          { label: 'ปริมาณเนยแท้', value: 'เนยสดคุณภาพสูง' },
+          { label: 'เทคนิคการถักเปีย', value: 'ถักเปียทรงมงกุฎ' },
+          { label: 'การเคลือบผิวหน้า', value: 'ทาไข่สองรอบเพิ่มความเงา' },
+        ],
+        tastingNote: '“เนื้อนุ่มละมุนดั่งเส้นไหม อวลกลิ่นเนยสดหอมหวาน”',
+        dailyYield: 'ถักมือจำกัดต่อรอบ',
+        formMetric: 'รูปทรง: วงเปียถัก (BRAIDED ROSETTE)',
+      },
+      reserveBtn: 'สอบถามรอบอบทาง Facebook',
+      exploreBtn: 'ชมเมนูขนมอบ',
+      bakerSignoff: '— ฉันชอบกลิ่นเนย (อ้างอิงแนวคิดร้าน)',
+    },
+    tabs: {
+      canele: 'กานาเล (3D)',
+      sourdough: 'ครัวซองต์',
+      brioche: 'เดนิช',
+    },
+    catalog: {
+      sectionEyebrow: 'MENU COLLECTION',
+      sectionTitle: 'ขนมอบแนะนำจากเตา',
+      sectionSubtitle:
+        'คัดสรรเมนูยอดนิยมจากเพจร้าน ขนมอบสดใหม่หอมเนยแท้ กรอบนอกนุ่มใน (ข้อมูลทดลองสำหรับ Prototype)',
+      photoSlotNotice:
+        'ช่องรับรูปภาพสินค้าจริง • เตรียมพร้อมรับรูปถ่ายความละเอียดสูงจากร้านโดยตรง',
+      demoBadge: 'DEMO CATALOG',
+      inquirePrice: 'สอบถามราคาตามรอบอบ',
+      viewDetailBtn: 'ดูรายละเอียด',
+      view3DBtn: 'เปิดโหมด 3D',
+      viewGalleryBtn: 'ชมภาพถ่าย',
+      allFilter: 'ทั้งหมด (All)',
+      croissantFilter: 'ครัวซองต์ (Croissant)',
+      danishFilter: 'เดนิช (Danish)',
+      pastryFilter: 'ขนมอบอื่น ๆ (Pastry)',
+      intakeGuide: 'วางไฟล์รูปในโฟลเดอร์ public/products/ เพื่อให้แสดงรูปจริงทันที',
+    },
+    detailStage: {
+      sectionEyebrow: 'PRODUCT FOCUS & 3D STUDIO',
+      sectionTitle: 'รายละเอียดขนมอบและมิติ 3 มิติ',
+      view3DLabel: '3D INTERACTIVE VIEW',
+      viewPhotoLabel: 'PRODUCT PHOTO GALLERY',
+      noGLBNotice:
+        'สินค้ารายการนี้อยู่ระหว่างรอโมเดล 3D Scan จริง • กำลังแสดงมุมมอง Photo Gallery และช่องรับรูปภาพ',
+      hasGLBNotice:
+        'สินค้ารายการนี้มีโมเดล 3D PBR พร้อมหมุนดูรอบทิศทาง 360 องศา',
+      inquireFbBtn: 'สอบถามสินค้านี้ทาง Facebook Messenger ↗',
+      intakeSlotLabel: 'ช่องรับไฟล์ภาพจริง:',
+      specsHeading: 'คุณลักษณะของขนมอบ (Product Specs)',
+      verificationTitle: 'สถานะการตรวจสอบข้อมูล (Verification Status)',
+      verificationDesc:
+        'ข้อมูล รายละเอียด และรูปภาพในส่วนนี้เป็นข้อมูลจำลองเพื่อการศึกษาการจัดวางระบบ (Layout Prototype) สามารถอัปเดตข้อมูลจริงได้ทันทีเมื่อได้รับการยืนยันจากทางร้าน',
+    },
+    facebookFeed: {
+      sectionEyebrow: 'LATEST FROM FACEBOOK',
+      sectionTitle: 'อัปเดตล่าสุดจากเพจ Facebook',
+      sectionSubtitle:
+        'โครงสร้างระบบคัดเลือกโพสต์สินค้าจากหน้าเพจ "ฉันชอบกลิ่นเนย" โดยไม่ต้อง Scrape และปลอดภัยตามมาตรฐาน API',
+      curatedBadge: 'CURATED FEED PROTOTYPE',
+      curatedDesc:
+        'ระบบเตรียมโครงสร้าง Data Provider แยกส่วน พร้อมเชื่อมต่อ Facebook Graph API เมื่อได้รับสิทธิ์ยืนยันจากร้าน',
+      openPostBtn: 'ดูโพสต์นี้บน Facebook ↗',
+      visitPageBtn: 'เยี่ยมชมเพจ Facebook ของร้าน ↗',
+      postedOn: 'เผยแพร่เมื่อ:',
+    },
+    about: {
+      sectionEyebrow: 'ABOUT THE BAKERY',
+      sectionTitle: 'เรื่องราวของ "ฉันชอบกลิ่นเนย"',
+      leadStory:
+        'ร้านขนมอบที่เริ่มต้นจากความหลงใหลในความหอมละมุนและเสน่ห์ของเนยสดแท้ รังสรรค์ครัวซองต์และเบเกอรี่ด้วยหัวใจของช่างทำขนม',
+      storyP1:
+        'จุดเด่นของทางร้านคือการคัดสรรเนยสดแท้คุณภาพสูง การควบคุมอุณหภูมิและกระบวนการพับแป้งอย่างพิถีพิถัน เพื่อให้ได้ครัวซองต์ที่กรอบเป็นชั้นฟูสวยงาม ส่งกลิ่นเนยหอมอบอวลทั่วทั้งเตาอบในทุก ๆ เช้า',
+      storyP2:
+        'นอกจากครัวซองต์คลาสสิก ทางร้านยังสร้างสรรค์เมนูเดนิชหน้าผลไม้สดและขนมอบหลากหลายชนิด โดยเน้นความสดใหม่และรสชาติที่กลมกล่อมลงตัว ไม่หวานเลี่ยนจนเกินไป',
+      pillar1Title: 'เนยสดแท้คุณภาพ',
+      pillar1Desc: 'หัวใจสำคัญคือเนยแท้คุณภาพสูงที่ให้กลิ่นหอมเฉพาะตัวและเนื้อสัมผัสกรอบฉ่ำ',
+      pillar2Title: 'แป้งพับหลายชั้น',
+      pillar2Desc: 'เทคนิคการรีดพับแป้งที่ประณีต ทำให้เกิดโพรงรวงผึ้งโปร่งเบาและกรอบฟู',
+      pillar3Title: 'อบสดใหม่ตามรอบ',
+      pillar3Desc: 'อบสดใหม่เพื่อคงความกรอบและกลิ่นหอมอันเป็นเอกลักษณ์ไว้ดีที่สุด',
+      disclaimerTitle: 'ข้อความแจ้งสถานะต้นแบบแนวคิด (Concept Prototype Notice)',
+      disclaimerDesc:
+        'เว็บไซต์นี้จัดทำขึ้นโดยทีมงานอิสระเพื่อเป็น "ตัวอย่างต้นแบบแนวคิด (Design Prototype)" ในการประยุกต์ใช้เทคโนโลยี 3D Interactive WebGL ร่วมกับธุรกิจเบเกอรี่ไทย โดยไม่ได้มีส่วนเกี่ยวข้องอย่างเป็นทางการ ไม่ได้มีระบบสั่งซื้อ ชำระเงิน หรือตัดสต็อกจริง และไม่ได้แอบอ้างสิทธิ์ในเครื่องหมายการค้าของทางร้านแต่อย่างใด',
+    },
+    contact: {
+      sectionEyebrow: 'GET IN TOUCH',
+      sectionTitle: 'สั่งซื้อและติดต่อทาง Facebook',
+      sectionSubtitle:
+        'เนื่องจากเป็นเว็บไซต์ต้นแบบแนวคิด หากต้องการสั่งซื้อขนมอบหรือสอบถามรอบอบจริง กรุณาติดต่อทางเพจ Facebook อย่างเป็นทางการของร้านโดยตรง',
+      messengerBtn: 'ส่งข้อความทาง Messenger ↗',
+      facebookPageBtn: 'ไปยังหน้าเพจ Facebook ↗',
+      inquiryNote: 'ติดต่อ: facebook.com/CroissantNanchao',
+    },
+    viewer: {
+      disclaimerTitle: 'โมเดล 3D สาธิต — ศึกษาแนวคิดผลิตภัณฑ์',
+      disclaimerSub: 'ระบบ 3D Viewer รองรับการหมุน 360° และการตรวจสอบโครงตาข่าย PBR',
+      caneleAssetTitle: 'โมเดล 3D PBR สาธิต — กานาเล เดอ บอร์โด (PHASE 2)',
+      caneleAssetSub: 'โมเดล PBR ความละเอียดสูงสำหรับทดสอบตัวแสดงผล 3D ในระบบ',
+      dragHint: 'ลากเพื่อหมุน 360° • เลื่อนเมาส์เพื่อซูม',
+      autoSpin: 'หมุนอัตโนมัติ',
+      autoSpinOn: 'เปิด',
+      autoSpinOff: 'ปิด',
+      wireframe: 'โครงลวดตาข่าย',
+      wireframeMesh: 'โครงลวด',
+      wireframeShaded: 'พื้นผิวจริง',
+      resetView: 'รีเซ็ตมุมกล้อง',
+      loading3D: 'กำลังโหลดสินทรัพย์ 3D',
+    },
+    demoModal: {
+      badge: 'โหมดทดลองต้นแบบ • SIMULATION ONLY',
+      title: 'บันทึกรายการจำลองสำเร็จ (Demo)',
+      desc: 'นี่คือการศึกษาโปรโตไทป์ส่วนหน้า (Frontend Prototype) ไม่มีระบบหลังบ้าน บัญชีผู้ใช้ การชำระเงิน หรือการตัดสต็อกสินค้าจริงแต่อย่างใด',
+      reservedItemLabel: 'รายการขนมอบที่เลือก',
+      lotLabel: 'หมายเลขรอบอบจำลอง',
+      pickupLabel: 'กำหนดเวลารับ',
+      pickupTime: '11:30 น. (ตัวอย่างจำลอง)',
+      notice: 'หากต้องการสั่งซื้อขนมอบจริง กรุณาติดต่อทาง Facebook ของร้านโดยตรง',
+      closeBtn: 'ปิดหน้าต่าง',
+    },
+    pillars: {
+      eyebrow: 'SAVOIR-FAIRE & PHILOSOPHY',
+      title: 'เสาหลักแห่งความใส่ใจในขนมอบ',
+      desc: 'เราคัดสรรวัตถุดิบและควบคุมกระบวนการอบอย่างประณีต เพื่อส่งมอบรสชาติและกลิ่นเนยที่น่าจดจำที่สุด',
+      items: [
+        {
+          num: '01',
+          title: 'เนยสดแท้คุณภาพสูง',
+          desc: 'คัดสรรเนยสดแท้คุณภาพพรีเมียม ให้กลิ่นหอมอบอวลและความฉ่ำละมุนในทุกชั้นของแป้งพาย',
+          metaLeft: 'PURE BUTTER',
+          metaRight: 'ARISAN QUALITY',
+        },
+        {
+          num: '02',
+          title: 'ความพิถีพิถันในการรีดพับ',
+          desc: 'ควบคุมอุณหภูมิและการรีดพับแป้ง เพื่อสร้างโครงสร้างโพรงรวงผึ้งที่โปร่งเบาและกรอบฟู',
+          metaLeft: 'LAMINATION',
+          metaRight: 'HONEYCOMB CRUST',
+        },
+        {
+          num: '03',
+          title: 'วัตถุดิบสดใหม่ตามฤดูกาล',
+          desc: 'ผลไม้สด ครีมคัสตาร์ดหอมวานิลลา และถั่วคั่วใหม่ ตัดรสชาติหวานมันอย่างลงตัว',
+          metaLeft: 'FRESH TOPPING',
+          metaRight: 'SEASONAL SELECTION',
+        },
+        {
+          num: '04',
+          title: 'อบสดใหม่จากเตาทุกวัน',
+          desc: 'ความสดใหม่จากเตาอบคือหัวใจ เพื่อให้ลูกค้าได้สัมผัสความกรอบและกลิ่นเนยที่ดีที่สุด',
+          metaLeft: 'HEARTH BAKED',
+          metaRight: 'DAILY FRESHNESS',
+        },
+      ],
+    },
+    footer: {
+      tagline: 'ครัวซองต์และขนมอบเนยสดแท้ • คราฟต์ด้วยความตั้งใจในทุก ๆ รอบอบ',
+      prototypeNote:
+        'เว็บไซต์นี้เป็น Concept Prototype สำหรับศึกษาการออกแบบดิจิทัลและเทคโนโลยี 3D WebGL โดยอ้างอิงข้อมูลเบื้องต้นจากเพจ "ฉันชอบกลิ่นเนย" ไม่ใช่เว็บไซต์อย่างเป็นทางการของทางร้าน',
+      hearthHeading: 'ช่องทางติดต่อทางการ',
+      hours: 'ติดตามรอบอบและสั่งซื้อ: facebook.com/CroissantNanchao',
+      collectionsHeading: 'เมนูขนมอบในระบบ',
+      collections: [
+        'ครัวซองต์ครีมสตรอว์เบอร์รี',
+        'เดนิชผลไม้รวม',
+        'ขนมอบหน้าครีมและถั่ว',
+        'กานาเล เดอ บอร์โด (3D)',
+      ],
+      dispatchHeading: 'สอบถามข้อมูลเพิ่มเติม',
+      dispatchDesc: 'สามารถติดต่อสอบถามรายละเอียดและรอบสั่งซื้อได้โดยตรงผ่านทาง Facebook Messenger',
+      emailPlaceholder: 'กรอกอีเมลเพื่อติดตามข่าวสาร',
+      joinBtn: 'ติดตาม',
+      copyright: '© 2026 CHAN CHOP KLIN NOEI — CONCEPT SHOWCASE PROTOTYPE.',
+      legalTech: 'WebGL 3D Engine • React 19 • TypeScript • Three.js',
+      legalStyle: 'Editorial Minimal & Artisan Bakery Aesthetics',
+    },
+  },
+  en: {
+    nav: {
+      brandTitle: 'CHAN CHOP KLIN NOEI',
+      brandSub: 'ARTISANAL CROISSANT & VIENNOISERIE • BANGKOK',
+      collection: 'Pastry Menu',
+      savoirFaire: 'Baking Craft',
+      heritage: 'Facebook Feed',
+      atelier: 'About Us',
+      hearthActive: 'HEARTH ACTIVE • BAKED DAILY',
+      reserveBtn: 'INQUIRE BATCH',
+      facebookLink: 'Facebook Page ↗',
+      prototypeBadge: 'CONCEPT PROTOTYPE',
+    },
+    hero: {
+      badge: 'CONCEPT DESIGN PROTOTYPE • NON-OFFICIAL',
+      eyebrow: 'ARTISANAL CROISSANT & VIENNOISERIE',
+      titleMain: 'Aroma of Pure Butter,',
+      titleAccent: 'Every Layer Handcrafted.',
+      description:
+        'Inspired by "Chan Chop Klin Noei" (I Love the Smell of Butter), an artisanal bakery dedicated to pure butter croissants, laminated Danish pastries, and velvety creams. (This site is an independent digital showcase prototype exploring 3D interactive web experiences).',
+      orderFbBtn: 'Contact via Facebook ↗',
+      exploreMenuBtn: 'Explore Pastry Menu',
+      specBatch: 'Fresh Batch Bakes',
+      specButter: 'Pure Artisan Butter',
+      specHearth: 'Handcrafted Daily',
+      canele: {
+        subtitle: '3D Research Model • Canelé de Bordeaux',
         title: 'Caramelised Armor,',
         italicWord: 'Molten Custard Heart.',
-        description:
-          'Baked in seasoned French copper molds coated with pure beeswax. A contrast between a crisp mahogany crust and an airy custard honeycomb infused with Madagascar vanilla bean and aged Martinique rum.',
+        description: 'Baked in seasoned French copper molds coated with pure beeswax. A contrast between a crisp mahogany crust and an airy custard honeycomb.',
         specs: [
           { label: 'COPPER MOLD BAKE', value: '65 min at 230°C' },
           { label: 'CRUST SHEEN', value: 'Pure Beeswax & Raw Cane' },
           { label: 'REST DURATION', value: '48h Batter Maturation' },
         ],
-        tastingNote:
-          '“Deep caramelized sugar crackle surrendering to a cool, velvety vanilla cloud.”',
-        dailyYield: '120 pieces handcrafted daily',
+        tastingNote: '“Deep caramelized sugar crackle surrendering to a cool, velvety vanilla cloud.”',
+        dailyYield: 'Handcrafted batch yield',
         formMetric: 'FORM: FLUTED CYLINDER (12 RIBS)',
       },
       sourdough: {
-        subtitle: 'N° 02 • PAIN DE CAMPAGNE',
-        title: 'Sculpted by Wild Yeast,',
-        italicWord: 'Basalt Hearth & Time.',
-        description:
-          'Born from unbleached Type 80 stoneground ancient wheat and our century-old sourdough mother. Fermented for 36 hours in woven wicker bannetons, then blistered on red-hot refractory stone.',
+        subtitle: 'Geometric Study • Pain au Levain',
+        title: 'Blistered Ear Score,',
+        italicWord: 'Airy Wild Honeycomb.',
+        description: 'Naturally fermented wild levain loaf with an open custard-like crumb and deeply caramelized crust.',
         specs: [
-          { label: 'HYDRATION LEVEL', value: '78% Pure Alpine Water' },
-          { label: 'WILD LEVAIN', value: 'Centennial Mother (1924)' },
-          { label: 'HEARTH BAKE', value: 'Direct Basalt Stone • 245°C' },
+          { label: 'FERMENTATION', value: '36h Cold Proof' },
+          { label: 'HYDRATION', value: '82% High Hydration' },
+          { label: 'HEARTH BAKE', value: 'Steam Injected 245°C' },
         ],
-        tastingNote:
-          '“A deeply blistered ear, roasted hazelnut aroma, and an open custard crumb with balanced acidity.”',
-        dailyYield: '80 boules pulled at dawn',
-        formMetric: 'FORM: ELLIPSOID BOULE + CRESCENT EAR',
+        tastingNote: '“Gentle lactic acidity, custardy crumb, and toasted wheat crackle.”',
+        dailyYield: 'Handmade daily batch',
+        formMetric: 'FORM: ELONGATED BÂTARD',
       },
       brioche: {
-        subtitle: 'N° 03 • VIENNOISERIE ARTISANALE',
-        title: 'Layers of Golden Sun,',
-        italicWord: 'Charentes Butter Weave.',
-        description:
-          'Hand-braided couronne using high-fat cultured Charentes-Poitou butter and organic free-range egg yolks. Slow cold-proofed overnight to produce an impossibly tender, featherlight crumb.',
+        subtitle: 'Geometric Study • Brioche Tressée',
+        title: 'Featherlight Silken Crumb,',
+        italicWord: 'Gilded Braided Crown.',
+        description: 'Enriched French brioche dough laminated with pure cultured butter, braided into a glistening crown.',
         specs: [
-          { label: 'AOP BUTTER CONTENT', value: '84% Charentes-Poitou' },
-          { label: 'WEAVE TECHNIQUE', value: 'Six-Strand Twisted Crown' },
-          { label: 'SURFACE FINISH', value: 'Double Egg Glaze & Pearl Sugar' },
+          { label: 'BUTTER CONTENT', value: 'High Pure Butter' },
+          { label: 'BRAIDING TECHNIQUE', value: 'Six-Strand Crown' },
+          { label: 'EGG WASH GLAZE', value: 'Double Gilded Glaze' },
         ],
-        tastingNote:
-          '“Tender shreds that melt like spun silk, rich with sweet cream and floral orange blossom.”',
-        dailyYield: '60 crowns braided per batch',
-        formMetric: 'FORM: BRAIDED ROSETTE CLUSTER',
+        tastingNote: '“Melt-in-the-mouth tenderness infused with fresh cream and orange blossom.”',
+        dailyYield: 'Limited crown batch',
+        formMetric: 'FORM: BRAIDED ROSETTE',
       },
-      reserveBtn: "RESERVE TODAY’S BAKE",
-      exploreBtn: 'EXPLORE MILLING HERITAGE',
-      bakerSignoff: '— Guillaume Vasseur, Maître Boulanger',
+      reserveBtn: 'Inquire on Facebook',
+      exploreBtn: 'Explore Menu',
+      bakerSignoff: '— Chan Chop Klin Noei (Concept Inspiration)',
     },
     tabs: {
-      canele: 'Canelé de Bordeaux',
-      sourdough: 'Pain au Levain',
-      brioche: 'Brioche Tressée',
+      canele: 'Canelé (3D)',
+      sourdough: 'Croissant',
+      brioche: 'Danish',
+    },
+    catalog: {
+      sectionEyebrow: 'MENU COLLECTION',
+      sectionTitle: 'Artisan Pastry Showcase',
+      sectionSubtitle:
+        'Curated selection inspired by the bakery’s Facebook page. Flaky, fragrant with pure butter, baked fresh in batches. (Experimental demo catalog).',
+      photoSlotNotice:
+        'Official Photo Intake Slot • Ready to receive high-resolution bakery photography',
+      demoBadge: 'DEMO CATALOG',
+      inquirePrice: 'Inquire price per batch',
+      viewDetailBtn: 'View Details',
+      view3DBtn: 'Switch to 3D',
+      viewGalleryBtn: 'View Photos',
+      allFilter: 'All Items',
+      croissantFilter: 'Croissants',
+      danishFilter: 'Danish Pastries',
+      pastryFilter: 'Specialty Pastries',
+      intakeGuide: 'Place real product photos into public/products/ to display immediately',
+    },
+    detailStage: {
+      sectionEyebrow: 'PRODUCT FOCUS & 3D STUDIO',
+      sectionTitle: 'Pastry Anatomy & 3D Showcase',
+      view3DLabel: '3D INTERACTIVE VIEW',
+      viewPhotoLabel: 'PRODUCT PHOTO GALLERY',
+      noGLBNotice:
+        'This item is currently awaiting real 3D scan intake • Displaying high-res photo gallery and intake slot',
+      hasGLBNotice:
+        'Interactive 3D PBR model active • Full 360° rotation and wireframe inspection enabled',
+      inquireFbBtn: 'Inquire about this pastry on Facebook ↗',
+      intakeSlotLabel: 'Assigned Intake Slot:',
+      specsHeading: 'Pastry Craft Specifications',
+      verificationTitle: 'Prototype Data Status',
+      verificationDesc:
+        'This product description and mock specs are provided as an editorial prototype layout. They can be updated seamlessly once verified bakery data is supplied.',
+    },
+    facebookFeed: {
+      sectionEyebrow: 'LATEST FROM FACEBOOK',
+      sectionTitle: 'Recent Facebook Dispatches',
+      sectionSubtitle:
+        'Curated post ingestion blueprint from "Chan Chop Klin Noei" page without unauthenticated scraping or client token exposure.',
+      curatedBadge: 'CURATED FEED PROTOTYPE',
+      curatedDesc:
+        'Decoupled data provider ready for Facebook Graph API once page authentication is configured.',
+      openPostBtn: 'View on Facebook ↗',
+      visitPageBtn: 'Visit Official Facebook Page ↗',
+      postedOn: 'Published:',
+    },
+    about: {
+      sectionEyebrow: 'ABOUT THE BAKERY',
+      sectionTitle: 'The Story of "Chan Chop Klin Noei"',
+      leadStory:
+        'Born from a genuine passion for the intoxicating aroma and warmth of pure artisan butter, crafting viennoiserie with dedication.',
+      storyP1:
+        'At the heart of the bakery is an unyielding focus on pure quality butter, careful temperature control, and precision lamination, creating crisp, airy honeycomb layers that fill the air with irresistible fragrance each morning.',
+      storyP2:
+        'Alongside classic croissants, the bakery creates seasonal fruit danishes and specialty pastries, balancing rich buttery flakiness with fresh cream and bright seasonal fruits.',
+      pillar1Title: 'Pure Quality Butter',
+      pillar1Desc: 'Authentic butter providing rich fragrance and a crisp, melting mouthfeel.',
+      pillar2Title: 'Delicate Lamination',
+      pillar2Desc: 'Precise multi-layer folding creating delicate honeycomb pockets and airy flakiness.',
+      pillar3Title: 'Baked Fresh in Batches',
+      pillar3Desc: 'Freshly hearth-baked to preserve signature aroma and crisp texture.',
+      disclaimerTitle: 'Concept Prototype Notice',
+      disclaimerDesc:
+        'This website is an independent digital concept prototype exploring 3D interactive WebGL design for Thai artisan bakeries. It is not an official commercial site, has no live billing or inventory system, and does not claim ownership of the bakery trademark.',
+    },
+    contact: {
+      sectionEyebrow: 'GET IN TOUCH',
+      sectionTitle: 'Connect & Order via Facebook',
+      sectionSubtitle:
+        'As this is an experimental concept prototype, please reach out directly through the official Facebook page for actual pastry orders and batch availability.',
+      messengerBtn: 'Send Message on Messenger ↗',
+      facebookPageBtn: 'Visit Facebook Page ↗',
+      inquiryNote: 'Official link: facebook.com/CroissantNanchao',
     },
     viewer: {
       disclaimerTitle: 'PROTOTYPE 3D GEOMETRY — CONCEPT STUDY',
-      disclaimerSub:
-        'Procedural Three.js geometry placeholder • Intake slot reserved for photogrammetry scan GLB',
-      caneleAssetTitle: 'INTERIM PBR PRODUCTION MODEL — CANELÉ DE BORDEAUX (PHASE 2)',
-      caneleAssetSub:
-        'Engineered Blender 4.2 LTS PBR model (~85% photoreal) • Pipeline ready for Photogrammetry Scan intake',
+      disclaimerSub: 'Interactive Three.js 3D viewer supporting 360° orbit, zoom, and wireframe',
+      caneleAssetTitle: 'DEMONSTRATION 3D PBR ASSET — CANELÉ DE BORDEAUX',
+      caneleAssetSub: 'High-poly PBR model demonstrating WebGL 3D capabilities',
       dragHint: 'DRAG TO ROTATE 360° • SCROLL TO ZOOM',
       autoSpin: 'AUTO-SPIN',
       autoSpinOn: 'ON',
@@ -178,231 +564,71 @@ export const translations: Record<Language, Translations> = {
       loading3D: 'STREAMING 3D ASSET',
     },
     demoModal: {
-      badge: 'PHASE 1 DEMO MODE • SIMULATION ONLY',
-      title: 'Batch Allocation Reserved (Demo)',
-      desc: 'This is an interactive frontend prototype study. In Phase 1, there is strictly no backend, user login, payment gateway, or live inventory deduction.',
-      reservedItemLabel: 'RESERVED PRODUCT',
-      lotLabel: 'SIMULATED BATCH N°',
-      pickupLabel: 'PROJECTED HEARTH PULL',
-      pickupTime: 'Tomorrow 07:15 AM (Le Marais Atelier)',
-      notice:
-        'Phase 1 constraint compliance: Ready for Art Director & Client visual sign-off.',
-      closeBtn: 'CLOSE PREVIEW',
+      badge: 'CONCEPT PROTOTYPE • SIMULATION ONLY',
+      title: 'Batch Allocation Simulation (Demo)',
+      desc: 'This is an interactive frontend prototype study. There is strictly no backend, user login, payment gateway, or live inventory deduction.',
+      reservedItemLabel: 'Selected Pastry',
+      lotLabel: 'Simulation Batch Number',
+      pickupLabel: 'Estimated Pickup',
+      pickupTime: '11:30 AM (Sample)',
+      notice: 'For actual bakery orders, please message the official Facebook page directly.',
+      closeBtn: 'Close Window',
     },
     pillars: {
       eyebrow: 'SAVOIR-FAIRE & PHILOSOPHY',
-      title: 'The Four Pillars of Pure Levain',
-      desc: 'We strip breadmaking down to its sacred fundamentals: unadulterated heirloom grain, living microbes, pure spring water, and radiant fire.',
+      title: 'Core Pillars of the Bakery Craft',
+      desc: 'Handcrafted with meticulous dedication to pure butter, temperature control, and fresh baking.',
       items: [
         {
           num: '01',
-          title: 'Stoneground Heirloom Wheat',
-          desc: 'Type 80 semi-complete flour milled on granite millstones in Auvergne. Rich in germ oils, minerals, and rustic bran flakes without chemical additives.',
-          metaLeft: 'PROVENANCE: AUVERGNE',
-          metaRight: 'EXTRACTION: 82%',
+          title: 'Pure Artisan Butter',
+          desc: 'Carefully selected pure butter infusing every pastry with rich, comforting fragrance.',
+          metaLeft: 'PURE BUTTER',
+          metaRight: 'ARTISAN QUALITY',
         },
         {
           num: '02',
-          title: 'Centennial Sourdough Levain',
-          desc: 'A living microbial culture nurtured with rye and spring water every eight hours since 1924. Gives rise to complex organic acids, deep aroma, and digestible crumb.',
-          metaLeft: 'AGE: EST. 1924',
-          metaRight: 'FERMENT: 36 HOURS',
+          title: 'Precision Lamination',
+          desc: 'Temperature-controlled folding creating an open, airy honeycomb crust.',
+          metaLeft: 'LAMINATION',
+          metaRight: 'HONEYCOMB CRUST',
         },
         {
           num: '03',
-          title: 'Basalt Wood-Fired Hearth',
-          desc: 'Baking directly on 250-year-old French volcanic stones. Sustained conductive heat caramelizes complex sugars into a blistered, crackling dark crust.',
-          metaLeft: 'FUEL: FRENCH OAK',
-          metaRight: 'HEAT: 245°C STEADY',
+          title: 'Fresh Seasonal Accents',
+          desc: 'Fresh berries, aromatic vanilla custard, and lightly roasted nuts.',
+          metaLeft: 'FRESH TOPPING',
+          metaRight: 'SEASONAL SELECTION',
         },
         {
           num: '04',
-          title: 'Zero-Compromise Dawn Batches',
-          desc: 'Every loaf is shaped by hand using traditional wooden bannetons. Pulling only 80 signature loaves and 120 canelés each morning until sold out.',
-          metaLeft: 'START: 03:30 AM',
-          metaRight: 'HAND-SHAPED 100%',
+          title: 'Baked Fresh Daily',
+          desc: 'Hearth-baked in controlled batches to ensure optimal crispness and aroma.',
+          metaLeft: 'HEARTH BAKED',
+          metaRight: 'DAILY FRESHNESS',
         },
       ],
     },
     footer: {
-      tagline:
-        'Artisanal Boulangerie & Digital Geometric Studies.\nWhere centuries of French craft meet real-time 3D craftsmanship.',
-      prototypeNote: 'PHASE 1 HOMEPAGE PROTOTYPE • EDITORIAL MINIMAL',
-      hearthHeading: 'L’ATELIER HEARTH',
-      hours:
-        'Mardi – Dimanche: 07:00 – 14:00\n(Or until the day’s bake is claimed)',
-      collectionsHeading: 'GRAIN COLLECTIONS',
+      tagline: 'Artisanal croissants and viennoiserie handcrafted with pure butter and dedication.',
+      prototypeNote:
+        'This website is an independent concept prototype exploring 3D interactive WebGL showcase design, inspired by "Chan Chop Klin Noei". Not an official storefront.',
+      hearthHeading: 'Official Inquiries',
+      hours: 'Follow batches and message: facebook.com/CroissantNanchao',
+      collectionsHeading: 'Featured Pastries',
       collections: [
-        'Canelé de Bordeaux (Beeswax)',
-        'Pain au Levain (Type 80 Heritage)',
-        'Brioche Tressée (AOP Charentes)',
-        'Auvergne Stone Mill Flours',
+        'Strawberry Cream Croissant',
+        'Mixed Fruit Danish',
+        'Nut & Cream Pastry',
+        'Canelé de Bordeaux (3D)',
       ],
-      dispatchHeading: 'MORNING BAKE DISPATCH',
-      dispatchDesc:
-        'Receive morning notifications when fresh sourdough leaves the hearth.',
-      emailPlaceholder: 'boulangerie@domaine.fr',
-      joinBtn: 'JOIN',
-      copyright: '© 2026 ATELIER 3D. Tous droits réservés.',
-      legalTech: 'THREE.JS • REACT THREE FIBER • DREI',
-      legalStyle: 'EDITORIAL MINIMAL • CINEMATIC LUXURY',
-    },
-  },
-  th: {
-    nav: {
-      brandTitle: 'ATELIER 3D',
-      brandSub: 'โอต บูลองเฌอรี • ปารีส',
-      collection: 'คอลเลกชันขนมอบ',
-      savoirFaire: 'ศาสตร์และศิลป์แห่งขนมปัง',
-      heritage: 'มรดกข้าวสาลีโบราณ',
-      atelier: 'สตูดิโอเตาอบ',
-      hearthActive: 'เตาอบทำงาน • 245°C',
-      reserveBtn: 'สำรองรอบอบ',
-    },
-    hero: {
-      canele: {
-        subtitle: 'ลำดับที่ 01 • สเปเชียลตี้แห่งบอร์โด',
-        title: 'เกราะคาราเมลกรอบหอม,',
-        italicWord: 'เนื้อคัสตาร์ดนุ่มละมุนใจกลาง',
-        description:
-          'อบในพิมพ์ทองแดงฝรั่งเศสโบราณเคลือบไขผึ้งธรรมชาติ ผิวกรอบคาราเมลสีมะฮอกกานีผสานเนื้อคัสตาร์ดด้านในที่นุ่มชุ่มฉ่ำ หอมกลิ่นวานิลลามาดากัสการ์และเหล้ารัมชั้นเลิศ',
-        specs: [
-          { label: 'พิมพ์ทองแดงโบราณ', value: '65 นาที ที่ 230°C' },
-          { label: 'การเคลือบผิวสัมผัส', value: 'ไขผึ้งธรรมชาติแท้' },
-          { label: 'การบ่มพักแป้ง', value: 'พักแป้งหมักเย็น 48 ชม.' },
-        ],
-        tastingNote:
-          '“เสียงสัมผัสกรอบกรุบของน้ำตาลไหม้ ก่อนจะละลายสู่ความนุ่มเนียนดั่งปุยเมฆวานิลลา”',
-        dailyYield: 'ผลิตจำกัด 120 ชิ้นต่อวัน',
-        formMetric: 'เรขาคณิต: ทรงกระบอก 12 ร่องนูน (FLUTED CYLINDER)',
-      },
-      sourdough: {
-        subtitle: 'ลำดับที่ 02 • ซาวโดว์ชนบทฝรั่งเศส',
-        title: 'รังสรรค์จากยีสต์ธรรมชาติ,',
-        italicWord: 'เตาหินบะซอลต์และกาลเวลา',
-        description:
-          'อบจากแป้งสาลีโบราณโม่หิน Type 80 และหัวเชื้อซาวโดว์อายุร้อยปี หมักบ่มช้าๆ 36 ชั่วโมงในตะกร้าหวาย ก่อนอบบนแผ่นหินบะซอลต์ภูเขาไฟจนผิวดอกปูดพองกรอบแน่น',
-        specs: [
-          { label: 'อัตราส่วนน้ำบริสุทธิ์', value: '78% น้ำแร่ธรรมชาติแอลป์' },
-          { label: 'หัวเชื้อซาวโดว์ป่า', value: 'แม่พันธุ์ซาวโดว์ดั้งเดิม (1924)' },
-          { label: 'การอบบนแผ่นหิน', value: 'หินบะซอลต์ภูเขาไฟ • 245°C' },
-        ],
-        tastingNote:
-          '“รอยกรีดกรอบเด่นชัด หอมกลิ่นฮาเซลนัทคั่ว เนื้อขนมปังโปร่งเหนียวนุ่มและรสเปรี้ยวกลมกล่อม”',
-        dailyYield: 'อบสดใหม่ 80 ก้อนยามรุ่งอรุณ',
-        formMetric: 'เรขาคณิต: ทรงรีพร้อมรอยกรีดกรอบ (ELLIPSOID + EAR)',
-      },
-      brioche: {
-        subtitle: 'ลำดับที่ 03 • เวียนนัวเซอรีคราฟต์',
-        title: 'เกลียวสีทองประกายแดด,',
-        italicWord: 'เปียเนยสดแท้ AOP ชารองต์',
-        description:
-          'บริออชถักเปียมงกุฎด้วยมือ ใช้เนยหมัก AOP Charentes-Poitou แท้และไข่ไก่ออร์แกนิก พักบ่มเย็นข้ามคืนเพื่อเนื้อสัมผัสเบานุ่ม ดึงเป็นเส้นใยละเอียดดั่งไหม',
-        specs: [
-          { label: 'ปริมาณเนย AOP แท้', value: '84% ชารองต์-ปัวตู (AOP)' },
-          { label: 'เทคนิคการถักเปีย', value: 'ถักเปียหกเส้นทรงมงกุฎ' },
-          { label: 'การเคลือบผิวหน้า', value: 'ทาไข่สองรอบและโรยน้ำตาลไข่มุก' },
-        ],
-        tastingNote:
-          '“เนื้อนุ่มละมุนดั่งเส้นไหม อวลกลิ่นครีมสดหอมหวานและละอองดอกส้ม”',
-        dailyYield: 'ถักมือจำกัด 60 มงกุฎต่อรอบ',
-        formMetric: 'เรขาคณิต: วงเปียถักทรงดอกไม้ (BRAIDED ROSETTE)',
-      },
-      reserveBtn: 'สำรองขนมอบรอบวันนี้',
-      exploreBtn: 'ศึกษาแหล่งกำเนิดเมล็ดข้าวสาลี',
-      bakerSignoff: '— กิโยม วาสเซอร์, ปรมาจารย์ช่างทำขนมปัง',
-    },
-    tabs: {
-      canele: 'กานาเล เดอ บอร์โด',
-      sourdough: 'ปัง โอ เลอแว็ง',
-      brioche: 'บริออช แทรซเซ',
-    },
-    viewer: {
-      disclaimerTitle: 'เรขาคณิต 3D ต้นแบบ — ศึกษาแนวคิดผลิตภัณฑ์',
-      disclaimerSub:
-        'โมเดลทดลอง Three.js (Placeholder) • เตรียมช่องรับโมเดล Photogrammetry GLB สำหรับสินค้าจริง',
-      caneleAssetTitle: 'โมเดล PBR ชั่วคราว — CANELÉ DE BORDEAUX (PHASE 2)',
-      caneleAssetSub:
-        'โมเดล PBR ส่งออกจาก Blender 4.2 LTS (ประมาณการความสมจริง ~85%) • ท่อส่งข้อมูลพร้อมรับ 3D Scan จริง',
-      dragHint: 'ลากเพื่อหมุน 360° • สองนิ้วเพื่อซูม',
-      autoSpin: 'หมุนอัตโนมัติ',
-      autoSpinOn: 'เปิด',
-      autoSpinOff: 'ปิด',
-      wireframe: 'โครงลวดตาข่าย',
-      wireframeMesh: 'โครงลวด',
-      wireframeShaded: 'พื้นผิวจริง',
-      resetView: 'รีเซ็ตมุมกล้อง',
-      loading3D: 'กำลังโหลดสินทรัพย์ 3D',
-    },
-    demoModal: {
-      badge: 'โหมดทดลองต้นแบบ PHASE 1 • การจำลองการทำงาน',
-      title: 'บันทึกการสำรองรอบอบจำลองสำเร็จ (Demo)',
-      desc: 'นี่คือการศึกษาโปรโตไทป์ส่วนหน้า (Frontend Prototype) ใน Phase 1 จะไม่มีระบบหลังบ้าน บัญชีผู้ใช้ การชำระเงิน หรือการตัดสต็อกสินค้าจริงแต่อย่างใด',
-      reservedItemLabel: 'รายการขนมอบที่เลือก',
-      lotLabel: 'หมายเลขรอบอบจำลอง',
-      pickupLabel: 'กำหนดออกจากเตาอบ',
-      pickupTime: 'พรุ่งนี้ 07:15 น. (สตูดิโอ เลอ มาเรส์ ปารีส)',
-      notice:
-        'พร้อมสำหรับการตรวจสอบด้านทัศนศิลป์และการใช้งาน (Visual & Interaction QA)',
-      closeBtn: 'ปิดหน้าต่างแสดงผล',
-    },
-    pillars: {
-      eyebrow: 'ศาสตร์ ประณีตศิลป์ และปรัชญา',
-      title: 'สี่เสาหลักแห่งการอบขนมปังบริสุทธิ์',
-      desc: 'เราคงหัวใจของการทำขนมปังไว้ที่แก่นแท้: ข้าวสาลีพันธุ์โบราณ จุลินทรีย์มีชีวิต น้ำแร่บริสุทธิ์ และความร้อนจากเปลวไฟ',
-      items: [
-        {
-          num: '01',
-          title: 'แป้งข้าวสาลีโบราณโม่หิน',
-          desc: 'แป้ง Type 80 โม่ด้วยหินแกรนิตจากแคว้นโอแวร์ญ อุดมด้วยจมูกข้าว แร่ธาตุ และรำข้าวธรรมชาติ ปราศจากสารเคมีสังเคราะห์',
-          metaLeft: 'แหล่งกำเนิด: แคว้นโอแวร์ญ',
-          metaRight: 'การสกัด: 82%',
-        },
-        {
-          num: '02',
-          title: 'หัวเชื้อซาวโดว์อายุ 100 ปี',
-          desc: 'จุลินทรีย์มีชีวิตที่ได้รับการดูแลด้วยแป้งไรย์และน้ำแร่อย่างประณีตทุก 8 ชั่วโมงมาตั้งแต่ปี 1924 ให้รสเปรี้ยวนุ่มนวล ย่อยง่าย สบายท้อง',
-          metaLeft: 'อายุ: ก่อตั้ง ค.ศ. 1924',
-          metaRight: 'การหมัก: 36 ชั่วโมง',
-        },
-        {
-          num: '03',
-          title: 'เตาอบหินบะซอลต์ฟืนไม้โอ๊ก',
-          desc: 'อบลงบนแผ่นหินภูเขาไฟฝรั่งเศสเก่าแก่กว่า 250 ปี ความร้อนสะสมสม่ำเสมอทำให้ผิวด้านนอกเกิดคาราเมลกรอบหอมแตกลายงา',
-          metaLeft: 'เชื้อเพลิง: ไม้โอ๊กฝรั่งเศส',
-          metaRight: 'ความร้อน: 245°C คงที่',
-        },
-        {
-          num: '04',
-          title: 'อบสดใหม่จำกัดจำนวนยามเช้า',
-          desc: 'ขึ้นรูปด้วยมือทุกลูกในตะกร้าหวายธรรมชาติ จำกัดเพียง 80 ก้อนและกานาเล 120 ชิ้นในแต่ละเช้า หมดแล้วหมดเลยเพื่อความสดใหม่ที่สุด',
-          metaLeft: 'เริ่มอบ: 03:30 น.',
-          metaRight: 'ขึ้นรูปด้วยมือ 100%',
-        },
-      ],
-    },
-    footer: {
-      tagline:
-        'โรงอบขนมปังคราฟต์ฝรั่งเศสและการศึกษาเรขาคณิตสามมิติ\nจุดบรรจบของศิลปะดั้งเดิมและเทคโนโลยีดิจิทัล',
-      prototypeNote: 'โปรโตไทป์หน้าแรก PHASE 1 • สไตล์ EDITORIAL MINIMAL',
-      hearthHeading: 'ที่ตั้งเตาอบและสตูดิโอ',
-      hours:
-        'อังคาร – อาทิตย์: 07:00 – 14:00 น.\n(หรือจนกว่าขนมอบประจำวันจะหมด)',
-      collectionsHeading: 'รายการคอลเลกชัน',
-      collections: [
-        'กานาเล เดอ บอร์โด (เคลือบไขผึ้ง)',
-        'ปัง โอ เลอแว็ง (แป้งโบราณ Type 80)',
-        'บริออช แทรซเซ (เนย AOP ชารองต์)',
-        'แป้งสาลีโม่หินแคว้นโอแวร์ญ',
-      ],
-      dispatchHeading: 'รับแจ้งเตือนรอบอบยามเช้า',
-      dispatchDesc:
-        'รับข้อความแจ้งเตือนทันทีที่ขนมปังออกจากเตาอบร้อนๆ ในแต่ละวัน',
-      emailPlaceholder: 'boulangerie@domaine.fr',
-      joinBtn: 'ติดตาม',
-      copyright: '© 2026 ATELIER 3D. สงวนลิขสิทธิ์',
-      legalTech: 'THREE.JS • REACT THREE FIBER • DREI',
-      legalStyle: 'EDITORIAL MINIMAL • CINEMATIC LUXURY',
+      dispatchHeading: 'Bakery Inquiries',
+      dispatchDesc: 'Direct inquiries and order inquiries are managed through Facebook Messenger.',
+      emailPlaceholder: 'Enter email for concept updates',
+      joinBtn: 'Subscribe',
+      copyright: '© 2026 CHAN CHOP KLIN NOEI — CONCEPT SHOWCASE PROTOTYPE.',
+      legalTech: 'WebGL 3D Engine • React 19 • TypeScript • Three.js',
+      legalStyle: 'Editorial Minimal & Artisan Bakery Aesthetics',
     },
   },
 }

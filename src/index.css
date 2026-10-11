@@ -1,42 +1,45 @@
-/* ATELIER 3D — Haute Boulangerie & Viennoiserie
-   Editorial Minimal Design System Tokens
+/* ATELIER 3D — ฉันชอบกลิ่นเนย (Chan Chop Klin Noei)
+   Editorial Minimal + Premium Artisan Bakery Design Tokens
 */
 
 :root {
-  /* Editorial Color Palette */
-  --bg-primary: #F3EFE7;
-  --bg-surface: #EAE4D7;
-  --bg-card: rgba(255, 255, 255, 0.65);
-  --bg-card-hover: rgba(255, 255, 255, 0.85);
-  --bg-pill: rgba(37, 35, 31, 0.05);
-  --bg-pill-active: #25231F;
+  /* Warm Ivory & Natural Bread Flour Palette */
+  --bg-primary: #FAF7F2;
+  --bg-surface: #F3ECE1;
+  --bg-ivory: #F8F4EC;
+  --bg-card: rgba(255, 255, 255, 0.78);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --bg-pill: rgba(43, 38, 34, 0.05);
+  --bg-pill-active: #2C2621;
 
-  --text-primary: #25231F;
-  --text-secondary: #6B655D;
-  --text-muted: #8E877C;
-  --text-inverted: #F3EFE7;
+  --text-primary: #2C2621;
+  --text-secondary: #6B6258;
+  --text-muted: #948B81;
+  --text-inverted: #FAF7F2;
 
-  /* Accent: Baked Crust / Terracotta */
+  /* Accent: Butter Brown & Terracotta */
   --accent: #A44B2F;
-  --accent-hover: #8C3E25;
-  --accent-light: #DF744A;
+  --accent-butter: #B86B35;
+  --accent-gold: #C2945D;
+  --accent-hover: #8B3B22;
+  --accent-light: #DE7B54;
   --accent-subtle: rgba(164, 75, 47, 0.08);
   --accent-border: rgba(164, 75, 47, 0.28);
 
   /* Borders & Grid lines */
-  --border-hairline: rgba(37, 35, 31, 0.10);
-  --border-strong: rgba(37, 35, 31, 0.22);
-  --border-accent: rgba(164, 75, 47, 0.4);
+  --border-hairline: rgba(43, 38, 34, 0.10);
+  --border-strong: rgba(43, 38, 34, 0.22);
+  --border-accent: rgba(164, 75, 47, 0.35);
 
-  /* Typography */
-  --font-serif: 'Cormorant Garamond', Garamond, 'Didot', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  /* Typography: Pairing French Editorial Serif with Elegant Thai Typography */
+  --font-serif: 'Cormorant Garamond', 'Noto Serif Thai', 'Didot', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'IBM Plex Sans Thai', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Shadows */
-  --shadow-card: 0 12px 32px -8px rgba(37, 35, 31, 0.06);
-  --shadow-pedestal: 0 24px 48px -12px rgba(37, 35, 31, 0.12);
-  --shadow-pill: 0 4px 12px rgba(37, 35, 31, 0.04);
+  --shadow-card: 0 12px 32px -8px rgba(43, 38, 34, 0.06);
+  --shadow-pedestal: 0 24px 48px -12px rgba(43, 38, 34, 0.12);
+  --shadow-pill: 0 4px 12px rgba(43, 38, 34, 0.04);
 }
 
 *, *::before, *::after {
@@ -58,35 +61,42 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Custom Editorial Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection */
 ::selection {
   background: var(--accent);
-  color: #fff;
+  color: #FFFFFF;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background-color: var(--bg-primary);
-  /* Subtle organic paper grain overlay */
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(164, 75, 47, 0.02) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(164, 75, 47, 0.03) 0%, transparent 45%);
-}
-
-/* Base Editorial Typography */
+/* Base Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
+  font-weight: 500;
   color: var(--text-primary);
   margin: 0;
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 p {
   margin: 0;
-  color: var(--text-secondary);
 }
 
 a {
@@ -97,14 +107,4 @@ a {
 button {
   font-family: inherit;
   cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-
-/* Accessibility focus ring */
-button:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
 }

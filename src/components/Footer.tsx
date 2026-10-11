@@ -10,10 +10,8 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
     <footer className="editorial-footer">
       <div className="footer-top-strip">
         <div className="footer-col brand-col">
-          <span className="footer-logo">ATELIER 3D</span>
-          <p className="footer-tagline">
-            {t.footer.tagline}
-          </p>
+          <span className="footer-logo">{t.nav.brandTitle}</span>
+          <p className="footer-tagline">{t.footer.tagline}</p>
           <div className="prototype-note">
             <span>{t.footer.prototypeNote}</span>
           </div>
@@ -22,15 +20,18 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
         <div className="footer-col">
           <span className="col-heading">{t.footer.hearthHeading}</span>
           <p className="col-content">
-            14 Rue de Turenne
+            <a
+              href="https://www.facebook.com/CroissantNanchao"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-fb-link"
+            >
+              facebook.com/CroissantNanchao ↗
+            </a>
             <br />
-            75004 Paris, France
-            <br />
-            Le Marais
+            {t.nav.brandSub}
           </p>
-          <p className="col-hours">
-            {t.footer.hours}
-          </p>
+          <p className="col-hours">{t.footer.hours}</p>
         </div>
 
         <div className="footer-col">
@@ -38,7 +39,7 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
           <ul className="footer-links">
             {t.footer.collections.map((item, idx) => (
               <li key={idx}>
-                <a href="#collection">{item}</a>
+                <a href="#menu">{item}</a>
               </li>
             ))}
           </ul>
@@ -47,17 +48,14 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
         <div className="footer-col">
           <span className="col-heading">{t.footer.dispatchHeading}</span>
           <p className="dispatch-desc">{t.footer.dispatchDesc}</p>
-          <form className="dispatch-form" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder={t.footer.emailPlaceholder}
-              className="dispatch-input"
-              aria-label="Email address for morning dispatch"
-            />
-            <button type="submit" className="dispatch-submit">
-              {t.footer.joinBtn}
-            </button>
-          </form>
+          <a
+            href="https://m.me/CroissantNanchao"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-msg-btn"
+          >
+            <span>Message on Facebook ↗</span>
+          </a>
         </div>
       </div>
 
