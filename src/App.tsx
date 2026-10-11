@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Navbar } from './components/Navbar'
 import { BakeryHero } from './components/BakeryHero'
+import { BakeryPopUpLocation } from './components/BakeryPopUpLocation'
 import { FeaturedCatalog } from './components/FeaturedCatalog'
 import { ProductDetailStage } from './components/ProductDetailStage'
 import { Developer3DPreview } from './components/Developer3DPreview'
@@ -96,6 +97,12 @@ export default function App() {
           lang={lang}
           t={t}
           onExploreMenu={handleExploreMenu}
+        />
+
+        {/* 2.5 Pop-up Schedule & Booth Location (Phase 4.3) */}
+        <BakeryPopUpLocation
+          lang={lang}
+          t={t}
         />
 
         {/* 3. Featured Products Catalog (3 Items + 3D Study) */}

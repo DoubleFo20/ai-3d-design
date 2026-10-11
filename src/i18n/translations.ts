@@ -108,6 +108,30 @@ export interface Translations {
     visitPageBtn: string
     postedOn: string
   }
+  popUpLocation: {
+    sectionEyebrow: string
+    sectionTitle: string
+    sectionSubtitle: string
+    statusToday: string
+    statusUpcoming: string
+    statusPast: string
+    boothLabel: string
+    venueLabel: string
+    dateLabel: string
+    addressLabel: string
+    announcementLabel: string
+    openMapsBtn: string
+    viewFbBtn: string
+    contactPhoneLabel: string
+    verificationBadge: string
+    verificationNotice: string
+    mapNotice: string
+    hoursNotice: string
+    expiredNotice: string
+    curatedSourceBadge: string
+    curatedSourceDesc: string
+    boothSubtitle: string
+  }
   about: {
     sectionEyebrow: string
     sectionTitle: string
@@ -333,6 +357,36 @@ export const translations: Record<Language, Translations> = {
       openPostBtn: 'ดูโพสต์นี้บน Facebook ↗',
       visitPageBtn: 'เยี่ยมชมเพจ Facebook ของร้าน ↗',
       postedOn: 'ช่องจำลองวันที่:',
+    },
+    popUpLocation: {
+      sectionEyebrow: 'WHERE TO FIND US',
+      sectionTitle: 'วันนี้ร้านอยู่ที่ไหน?',
+      sectionSubtitle:
+        'อัปเดตสถานที่และล็อกบูธออกงานจำหน่าย จากประกาศอย่างเป็นทางการของเพจ ฉันชอบกลิ่นเนย',
+      statusToday: 'ออกบูธตามประกาศวันนี้',
+      statusUpcoming: 'ประกาศออกบูธล่วงหน้า',
+      statusPast: 'ประกาศออกบูธย้อนหลัง',
+      boothLabel: 'ล็อกบูธจำหน่าย',
+      venueLabel: 'สถานที่ออกบูธ',
+      dateLabel: 'วันและรอบออกบูธ',
+      addressLabel: 'ที่ตั้งและเส้นทาง',
+      announcementLabel: 'ประกาศจากเพจ',
+      openMapsBtn: 'เปิดพิกัดใน Google Maps ↗',
+      viewFbBtn: 'ดูเพจทางการบน Facebook ↗',
+      contactPhoneLabel: 'เบอร์โทรศัพท์ติดต่อ',
+      verificationBadge: 'รอตรวจยืนยัน (PENDING)',
+      verificationNotice:
+        'เบอร์โทรศัพท์จากบันทึกเดิม รอตรวจยืนยันข้อมูลก่อนเปิดโทรติดต่อโดยตรง',
+      mapNotice:
+        'หมุดแผนที่ระบุบริเวณตลาดเซฟวันโก ไม่ใช่พิกัดล็อกบูธโดยตรง',
+      hoursNotice:
+        'เวลาจำหน่ายขึ้นอยู่กับรอบอบและประกาศทางเพจ (ไม่มีการระบุเวลาในโพสต์)',
+      expiredNotice:
+        'ประกาศนี้ผ่านพ้นไปแล้ว กรุณาติดตามประกาศออกบูธรอบถัดไปทาง Facebook',
+      curatedSourceBadge: 'ข้อมูลคัดลอกจาก Facebook Post',
+      curatedSourceDesc:
+        'คัดลอกจากโพสต์ทางการของเพจ ฉันชอบกลิ่นเนย โดยผู้ดูแลระบบ (ไม่ได้ใช้การ Scrape และยังไม่มีการเชื่อมต่อ Graph API)',
+      boothSubtitle: 'ค้นหาป้ายร้านและเคาน์เตอร์ขนมอบได้ที่ล็อกนี้',
     },
     about: {
       sectionEyebrow: 'ABOUT THE BAKERY',
@@ -591,6 +645,36 @@ export const translations: Record<Language, Translations> = {
       openPostBtn: 'View on Facebook ↗',
       visitPageBtn: 'Visit Official Facebook Page ↗',
       postedOn: 'Simulated Date Slot:',
+    },
+    popUpLocation: {
+      sectionEyebrow: 'WHERE TO FIND US',
+      sectionTitle: 'Where to Find Us Today?',
+      sectionSubtitle:
+        'Official pop-up venue, booth location, and event announcements curated from Chan Chop Klin Noei Facebook page.',
+      statusToday: 'Pop-up Booth Announced for Today',
+      statusUpcoming: 'Upcoming Pop-up Announcement',
+      statusPast: 'Past Pop-up Announcement',
+      boothLabel: 'Booth Number',
+      venueLabel: 'Pop-Up Venue',
+      dateLabel: 'Event Date & Schedule',
+      addressLabel: 'Address & Navigation',
+      announcementLabel: 'Official Announcement',
+      openMapsBtn: 'Open in Google Maps ↗',
+      viewFbBtn: 'Visit Official Facebook Page ↗',
+      contactPhoneLabel: 'Contact Telephone',
+      verificationBadge: 'PENDING VERIFICATION',
+      verificationNotice:
+        'Phone number from previous records; verification pending before direct dial is enabled.',
+      mapNotice:
+        'Map pin indicates market premises, not exact booth coordinate.',
+      hoursNotice:
+        'Operating hours depend on daily baking batches announced on Facebook (unspecified in post).',
+      expiredNotice:
+        'This pop-up date has passed. Please check the official Facebook page for upcoming schedules.',
+      curatedSourceBadge: 'Curated from Facebook Post',
+      curatedSourceDesc:
+        'Curated manually from official Facebook post of Chan Chop Klin Noei by admin (No automated scraping, no live Graph API connection).',
+      boothSubtitle: 'Look for our bakery sign and display counter at this booth',
     },
     about: {
       sectionEyebrow: 'ABOUT THE BAKERY',

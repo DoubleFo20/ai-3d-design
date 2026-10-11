@@ -60,3 +60,26 @@ export interface BakeryMeta {
   messengerUrl: string
   disclaimer: LocalizedString
 }
+
+export type PopUpStatus = 'today' | 'upcoming' | 'past'
+
+export interface PopUpEvent {
+  id: string
+  eventDate: string // YYYY-MM-DD
+  dayOfWeek?: LocalizedString
+  venueName: LocalizedString
+  venueAddress: LocalizedString
+  boothNumbers: string
+  mapUrl: string
+  sourcePageUrl: string
+  sourcePostUrl: string | null
+  announcement: LocalizedString
+  startTime: string | null
+  endTime: string | null
+  contactPhone: string | null
+  contactVerified: boolean
+  sourceType: 'manual_facebook_post'
+  verificationStatus: 'PENDING' | 'VERIFIED'
+  notes?: LocalizedString
+}
+
