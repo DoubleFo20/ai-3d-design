@@ -123,8 +123,10 @@ export interface Translations {
     openMapsBtn: string
     viewFbBtn: string
     contactPhoneLabel: string
-    verificationBadge: string
-    verificationNotice: string
+    callShopBtn: string
+    callShopNote: string
+    verificationBadge?: string
+    verificationNotice?: string
     mapNotice: string
     hoursNotice: string
     expiredNotice: string
@@ -386,20 +388,21 @@ export const translations: Record<Language, Translations> = {
       sectionTitle: 'วันนี้ร้านอยู่ที่ไหน?',
       sectionSubtitle:
         'อัปเดตสถานที่และล็อกบูธออกงานจำหน่าย จากประกาศอย่างเป็นทางการของเพจ ฉันชอบกลิ่นเนย',
-      statusToday: 'ออกบูธตามประกาศวันนี้',
+      statusToday: 'ออกบูธวันนี้',
       statusUpcoming: 'ประกาศออกบูธล่วงหน้า',
-      statusPast: 'ประกาศออกบูธย้อนหลัง',
+      statusPast: 'ประกาศที่ผ่านมา',
       boothLabel: 'ล็อกบูธจำหน่าย',
       venueLabel: 'สถานที่ออกบูธ',
       dateLabel: 'วันและรอบออกบูธ',
       addressLabel: 'ที่ตั้งและเส้นทาง',
       announcementLabel: 'ประกาศจากเพจ',
       openMapsBtn: 'เปิดพิกัดใน Google Maps ↗',
-      viewFbBtn: 'ดูเพจทางการบน Facebook ↗',
-      contactPhoneLabel: 'เบอร์โทรศัพท์ติดต่อ',
-      verificationBadge: 'รอตรวจยืนยัน (PENDING)',
-      verificationNotice:
-        'เบอร์โทรศัพท์จากบันทึกเดิม รอตรวจยืนยันข้อมูลก่อนเปิดโทรติดต่อโดยตรง',
+      viewFbBtn: 'ดูประกาศบน Facebook ↗',
+      contactPhoneLabel: 'เบอร์ติดต่อร้าน',
+      callShopBtn: 'โทรสอบถามร้าน',
+      callShopNote: 'ติดต่อสอบถามรอบอบ เมนูประจำวัน และตำแหน่งล็อกบูธ',
+      verificationBadge: 'เบอร์ยืนยันแล้ว',
+      verificationNotice: 'เบอร์ติดต่อตรงของเจ้าของร้านเพื่อสอบถามสินค้าและข้อมูลหน้าร้าน',
       mapNotice:
         'หมุดแผนที่ระบุบริเวณตลาดเซฟวันโก ไม่ใช่พิกัดล็อกบูธโดยตรง',
       hoursNotice:
@@ -700,20 +703,21 @@ export const translations: Record<Language, Translations> = {
       sectionTitle: 'Where to Find Us Today?',
       sectionSubtitle:
         'Official pop-up venue, booth location, and event announcements curated from Chan Chop Klin Noei Facebook page.',
-      statusToday: 'Pop-up Booth Announced for Today',
-      statusUpcoming: 'Upcoming Pop-up Announcement',
-      statusPast: 'Past Pop-up Announcement',
+      statusToday: 'Pop-up Today',
+      statusUpcoming: 'Upcoming Announcement',
+      statusPast: 'Past Announcement',
       boothLabel: 'Booth Number',
       venueLabel: 'Pop-Up Venue',
       dateLabel: 'Event Date & Schedule',
       addressLabel: 'Address & Navigation',
       announcementLabel: 'Official Announcement',
       openMapsBtn: 'Open in Google Maps ↗',
-      viewFbBtn: 'Visit Official Facebook Page ↗',
-      contactPhoneLabel: 'Contact Telephone',
-      verificationBadge: 'PENDING VERIFICATION',
-      verificationNotice:
-        'Phone number from previous records; verification pending before direct dial is enabled.',
+      viewFbBtn: 'View Facebook Announcement ↗',
+      contactPhoneLabel: 'Bakery Contact',
+      callShopBtn: 'Call Bakery',
+      callShopNote: 'Inquire about daily bake batches, menu availability, and booth directions',
+      verificationBadge: 'Verified Contact',
+      verificationNotice: 'Direct owner contact number for bakery and booth inquiries',
       mapNotice:
         'Map pin indicates market premises, not exact booth coordinate.',
       hoursNotice:

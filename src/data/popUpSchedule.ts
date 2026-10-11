@@ -1,12 +1,12 @@
 /**
- * ATELIER 3D — Pop-Up Schedule & Booth Location Data (Phase 4.3)
+ * ATELIER 3D — Pop-Up Schedule & Booth Location Data (Phase 4.3.1)
  * Reference Business: ฉันชอบกลิ่นเนย (https://www.facebook.com/CroissantNanchao)
  *
  * DATA POLICY:
  * - Data manually curated from user-provided Facebook post snapshot.
  * - Map marker represents the market venue, not individual booth GPS.
  * - Business hours and exact post permalink are unverified; not fabricated.
- * - Phone number is flagged PENDING until formally verified.
+ * - Phone number is verified by owner: 083-646-3651 (Call Bakery direct).
  */
 
 import type { PopUpEvent, PopUpStatus } from '../types/bakery'
@@ -38,9 +38,9 @@ export const POP_UP_SCHEDULE: PopUpEvent[] = [
     startTime: null, // Unknown; do not invent
     endTime: null,
     contactPhone: '083-646-3651',
-    contactVerified: false, // Verification PENDING
+    contactVerified: true, // Verified by owner confirmation
     sourceType: 'manual_facebook_post',
-    verificationStatus: 'PENDING',
+    verificationStatus: 'VERIFIED',
     notes: {
       th: 'หมุดแผนที่ระบุตำแหน่งตลาดเซฟวันโก ไม่ใช่พิกัดล็อกบูธโดยตรง • เวลาจำหน่ายขึ้นอยู่กับรอบอบและประกาศทางเพจ',
       en: 'Map pin marks the market venue, not exact booth coordinates. Operating hours depend on daily bake schedule announced on page.',

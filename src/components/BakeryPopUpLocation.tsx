@@ -19,19 +19,25 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
   t,
 }) => {
   const todayBangkok = getBangkokTodayString()
-  const activeResolution = getActivePopUpEvent(todayBangkok)
+
+  // Simulated date mode for QA inspection (only shown when ?qa=true in URL)
+  const [showQaControls] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      return params.get('qa') === 'true' || window.location.hash.includes('qa')
+    }
+    return false
+  })
+  const [simulatedDateOverride, setSimulatedDateOverride] = useState<string | null>(null)
+  const [copyFeedback, setCopyFeedback] = useState<boolean>(false)
+
+  const effectiveReferenceDate = simulatedDateOverride || todayBangkok
+  const activeResolution = getActivePopUpEvent(effectiveReferenceDate)
 
   // Current selected event
   const [selectedEventId, setSelectedEventId] = useState<string>(
     activeResolution?.event.id || POP_UP_SCHEDULE[0]?.id || '',
   )
-
-  // Simulated date mode for QA inspection (allows reviewing today / upcoming / past behaviors)
-  const [simulatedDateOverride, setSimulatedDateOverride] = useState<string | null>(null)
-  const [copyFeedback, setCopyFeedback] = useState<boolean>(false)
-  const [showPhoneAlert, setShowPhoneAlert] = useState<boolean>(false)
-
-  const effectiveReferenceDate = simulatedDateOverride || todayBangkok
 
   const currentEvent: PopUpEvent | undefined =
     POP_UP_SCHEDULE.find((e) => e.id === selectedEventId) ||
@@ -51,22 +57,19 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
     try {
       await navigator.clipboard.writeText(currentEvent.venueAddress[lang])
       setCopyFeedback(true)
-      setTimeout(() => setCopyFeedback(false), 2500)
+      setTimeout(() => setCopyFeedback(false), 2400)
     } catch {
-      // Fallback
       setCopyFeedback(true)
-      setTimeout(() => setCopyFeedback(false), 2500)
+      setTimeout(() => setCopyFeedback(false), 2400)
     }
   }
 
-  const handlePhoneClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    // Enforce strict rule: Only enable click-to-call once verified.
-    if (!currentEvent.contactVerified) {
-      setShowPhoneAlert(true)
-      setTimeout(() => setShowPhoneAlert(false), 4000)
-    }
-  }
+  const cleanPhoneDial = currentEvent.contactPhone
+    ? currentEvent.contactPhone.replace(/[^0-9+]/g, '')
+    : '0836463651'
+
+  // Standardize booth numbers presentation with en-dash
+  const formattedBoothNumbers = currentEvent.boothNumbers.replace(/-/g, '–')
 
   return (
     <section
@@ -76,9 +79,9 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
     >
       <div className="section-container">
         {/* Editorial Section Header */}
-        <div className="location-section-header">
+        <header className="location-section-header">
           <div className="header-meta-row">
-            <p className="section-eyebrow">{t.popUpLocation.sectionEyebrow}</p>
+            <span className="section-eyebrow">{t.popUpLocation.sectionEyebrow}</span>
             <div className="header-curated-badge" title={t.popUpLocation.curatedSourceDesc}>
               <span className="badge-dot" aria-hidden="true" />
               <span>{t.popUpLocation.curatedSourceBadge}</span>
@@ -89,11 +92,11 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
             {t.popUpLocation.sectionTitle}
           </h2>
           <p className="section-subtitle">{t.popUpLocation.sectionSubtitle}</p>
-        </div>
+        </header>
 
         {/* Dynamic Pop-up Schedule Showcase Card */}
-        <div className={`popup-main-card status-${currentStatus}`}>
-          {/* Card Top Banner: Date Status Pill & Expired Alert */}
+        <article className={`popup-main-card status-${currentStatus}`}>
+          {/* Card Top Banner: Date Status Pill & Date Summary */}
           <div className="card-top-bar">
             <div className="status-indicator-group">
               <span className={`status-pill pill-${currentStatus}`}>
@@ -106,7 +109,9 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
               </span>
 
               <span className="date-summary-text">
-                {currentEvent.dayOfWeek?.[lang]} • {formatPopUpDate(currentEvent.eventDate, lang)}
+                <span className="date-day">{currentEvent.dayOfWeek?.[lang]}</span>
+                <span className="date-separator">•</span>
+                <span className="date-formatted">{formatPopUpDate(currentEvent.eventDate, lang)}</span>
               </span>
             </div>
 
@@ -128,40 +133,42 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
               </div>
             )}
 
-            {/* Simulated Reference Date QA Controls (For testing date transitions) */}
-            <div className="qa-date-test-controls" aria-label="Date QA Tester">
-              <span className="qa-test-label">QA Date Transition:</span>
-              <button
-                type="button"
-                className={`qa-date-btn ${simulatedDateOverride === null || simulatedDateOverride === currentEvent.eventDate ? 'active' : ''}`}
-                onClick={() => setSimulatedDateOverride(currentEvent.eventDate)}
-                title="Test Today mode (2026-10-11)"
-              >
-                Today
-              </button>
-              <button
-                type="button"
-                className={`qa-date-btn ${simulatedDateOverride === '2026-10-01' ? 'active' : ''}`}
-                onClick={() => setSimulatedDateOverride('2026-10-01')}
-                title="Test Future / Upcoming mode (Ref: Oct 1)"
-              >
-                Upcoming
-              </button>
-              <button
-                type="button"
-                className={`qa-date-btn ${simulatedDateOverride === '2026-10-20' ? 'active' : ''}`}
-                onClick={() => setSimulatedDateOverride('2026-10-20')}
-                title="Test Past / Expired mode (Ref: Oct 20)"
-              >
-                Past
-              </button>
-            </div>
+            {/* QA Date Controls (Hidden on public site, enabled only with ?qa=true) */}
+            {showQaControls && (
+              <div className="qa-date-test-controls" aria-label="Date QA Tester">
+                <span className="qa-test-label">QA Mode:</span>
+                <button
+                  type="button"
+                  className={`qa-date-btn ${simulatedDateOverride === null || simulatedDateOverride === currentEvent.eventDate ? 'active' : ''}`}
+                  onClick={() => setSimulatedDateOverride(currentEvent.eventDate)}
+                  title="Test Today mode (2026-10-11)"
+                >
+                  Today
+                </button>
+                <button
+                  type="button"
+                  className={`qa-date-btn ${simulatedDateOverride === '2026-10-01' ? 'active' : ''}`}
+                  onClick={() => setSimulatedDateOverride('2026-10-01')}
+                  title="Test Future mode"
+                >
+                  Upcoming
+                </button>
+                <button
+                  type="button"
+                  className={`qa-date-btn ${simulatedDateOverride === '2026-10-20' ? 'active' : ''}`}
+                  onClick={() => setSimulatedDateOverride('2026-10-20')}
+                  title="Test Past mode"
+                >
+                  Past
+                </button>
+              </div>
+            )}
           </div>
 
-          {/* Expired Announcement Warning Notice if date is past */}
+          {/* Past Announcement Warning Notice if date is past */}
           {currentStatus === 'past' && (
             <div className="expired-notice-banner" role="alert">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12 6 12 12 14 14" />
               </svg>
@@ -169,33 +176,44 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
             </div>
           )}
 
-          {/* Main Card Grid */}
+          {/* Main Card Grid: Desktop 2 Columns / Mobile 1 Column */}
           <div className="popup-card-grid">
-            {/* Left Column: Venue, Large Booth Badge & Announcement Excerpt */}
+            {/* Left Column: Venue Info, Booth Number, Announcement & Action Buttons */}
             <div className="popup-info-column">
-              {/* Venue Name & Category */}
+              {/* 1 & 2. Venue Name & Address Block */}
               <div className="venue-heading-block">
-                <span className="venue-category-tag">
-                  {lang === 'th' ? 'ตลาดนัดและงานออกบูธ' : 'POP-UP MARKET & FAIR'}
-                </span>
+                <div className="venue-tag-row">
+                  <span className="venue-category-tag">
+                    {lang === 'th' ? 'ตลาดนัดและงานออกบูธ' : 'POP-UP MARKET & FAIR'}
+                  </span>
+                </div>
                 <h3 className="venue-title">{currentEvent.venueName[lang]}</h3>
-                <p className="venue-address-text">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <div className="venue-address-box">
+                  <svg
+                    className="venue-address-icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    aria-hidden="true"
+                  >
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
-                  <span>{currentEvent.venueAddress[lang]}</span>
-                </p>
+                  <p className="venue-address-text">{currentEvent.venueAddress[lang]}</p>
+                </div>
               </div>
 
-              {/* High-Impact Booth Number Display */}
+              {/* 3. High-Impact Booth Number Display */}
               <div className="booth-highlight-box">
                 <div className="booth-header">
                   <span className="booth-label">{t.popUpLocation.boothLabel}</span>
                   <span className="booth-sub">{t.popUpLocation.boothSubtitle}</span>
                 </div>
                 <div className="booth-numbers-display" aria-label={`Booth numbers ${currentEvent.boothNumbers}`}>
-                  <span className="booth-number-tag">{currentEvent.boothNumbers}</span>
+                  <span className="booth-number-tag">{formattedBoothNumbers}</span>
                 </div>
                 <p className="booth-disclaimer-sub">
                   {lang === 'th'
@@ -204,7 +222,7 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
                 </p>
               </div>
 
-              {/* Announcement Excerpt from Page Post */}
+              {/* 4. Announcement Excerpt from Page Post */}
               <div className="post-announcement-card">
                 <div className="announcement-quote-icon" aria-hidden="true">“</div>
                 <div className="announcement-body">
@@ -215,13 +233,13 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
                 </div>
               </div>
 
-              {/* Primary Action Buttons */}
+              {/* 5. Primary Action Buttons (Google Maps & Facebook) */}
               <div className="popup-actions-row">
                 <a
                   href={currentEvent.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="popup-btn-primary"
+                  className="popup-btn popup-btn-maps"
                   id="open-google-maps-btn"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -236,7 +254,7 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
                   href={currentEvent.sourcePageUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="popup-btn-secondary"
+                  className="popup-btn popup-btn-fb"
                   id="view-facebook-page-btn"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -247,9 +265,9 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
               </div>
             </div>
 
-            {/* Right Column: Compliant Map Card, Schedule Rules & Contact Phone */}
+            {/* Right Column: Stylized Map Card, Operating Hours & Contact Phone */}
             <div className="popup-media-column">
-              {/* Compliant Stylized Market Map Card */}
+              {/* Stylized Market Map Card */}
               <div className="market-map-frame">
                 <div className="map-visual-card">
                   {/* Stylized Market Location Blueprint Graphic */}
@@ -259,15 +277,15 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
                     
                     {/* Market Pin Representation */}
                     <div className="map-market-pin-cluster">
-                      <div className="map-pin-pulse" />
+                      <div className="map-pin-pulse" aria-hidden="true" />
                       <div className="map-pin-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                         </svg>
                       </div>
                       <div className="map-pin-label">
-                        <span className="pin-title">ตลาดเซฟวันโก บางนา</span>
-                        <span className="pin-booth">Booth {currentEvent.boothNumbers}</span>
+                        <span className="pin-title">{currentEvent.venueName[lang]}</span>
+                        <span className="pin-booth">Booth {formattedBoothNumbers}</span>
                       </div>
                     </div>
 
@@ -285,7 +303,7 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
                   {/* Map Information Bar */}
                   <div className="map-footer-bar">
                     <div className="map-legend-group">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                         <circle cx="12" cy="12" r="10" />
                         <line x1="12" y1="16" x2="12" y2="12" />
                         <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -297,17 +315,18 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
                       type="button"
                       className="copy-address-action-btn"
                       onClick={handleCopyAddress}
+                      aria-label="Copy market address to clipboard"
                     >
                       {copyFeedback ? (
                         <>
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                           <span>{lang === 'th' ? 'คัดลอกแล้ว' : 'Copied'}</span>
                         </>
                       ) : (
                         <>
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                           </svg>
@@ -319,9 +338,9 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
                 </div>
               </div>
 
-              {/* Operating Hours Compliance Notice */}
+              {/* Operating Hours Notice */}
               <div className="compliance-hours-notice">
-                <div className="notice-icon-box">
+                <div className="notice-icon-box" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
@@ -335,59 +354,53 @@ export const BakeryPopUpLocation: React.FC<BakeryPopUpLocationProps> = ({
                 </div>
               </div>
 
-              {/* Telephone & Contact Verification Box */}
-              <div className="contact-verification-box">
-                <div className="contact-box-header">
-                  <span className="contact-box-label">{t.popUpLocation.contactPhoneLabel}</span>
-                  <span className={`verification-badge badge-${currentEvent.verificationStatus.toLowerCase()}`}>
-                    {t.popUpLocation.verificationBadge}
-                  </span>
-                </div>
-
-                <div className="phone-display-row">
-                  {currentEvent.contactPhone ? (
-                    <button
-                      type="button"
-                      onClick={handlePhoneClick}
-                      className="phone-unverified-btn"
-                      aria-label="Contact phone number pending verification"
-                    >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                      </svg>
-                      <span className="phone-number-text">{currentEvent.contactPhone}</span>
-                      <span className="phone-locked-tag">
-                        {lang === 'th' ? 'รอตรวจยืนยันเบอร์' : 'Verification Pending'}
-                      </span>
-                    </button>
-                  ) : (
-                    <span className="phone-number-text">—</span>
-                  )}
-                </div>
-
-                <p className="verification-explanatory-note">
-                  {t.popUpLocation.verificationNotice}
-                </p>
-
-                {showPhoneAlert && (
-                  <div className="phone-pending-toast" role="alert">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <line x1="12" y1="8" x2="12" y2="12" />
-                      <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg>
-                    <span>
-                      {lang === 'th'
-                        ? 'หมายเลขนี้ยังไม่ผ่านการตรวจยืนยัน เพื่อความปลอดภัยกรุณาติดต่อผ่าน Facebook Messenger ของทางร้านโดยตรง'
-                        : 'Phone number is pending formal verification. Please contact the shop via Facebook Messenger directly.'}
+              {/* 6. Contact Phone & Direct Dial Card (Verified Owner Contact) */}
+              <div className="contact-card-box">
+                <div className="contact-card-header">
+                  <div className="contact-label-group">
+                    <span className="contact-card-label">{t.popUpLocation.contactPhoneLabel}</span>
+                    <span className="contact-verified-dot" title="Verified Owner Contact">
+                      <span className="verified-dot-inner" />
+                      <span>{lang === 'th' ? 'เบอร์จริงของทางร้าน' : 'Verified Contact'}</span>
                     </span>
                   </div>
-                )}
+                </div>
+
+                <div className="phone-action-container">
+                  <a
+                    href={`tel:${cleanPhoneDial}`}
+                    className="phone-call-action-btn"
+                    id="call-bakery-btn"
+                    title={`${t.popUpLocation.callShopBtn}: ${currentEvent.contactPhone}`}
+                  >
+                    <div className="phone-btn-icon-circle">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                      </svg>
+                    </div>
+                    <div className="phone-btn-content">
+                      <span className="phone-btn-cta">{t.popUpLocation.callShopBtn}</span>
+                      <span className="phone-btn-number">{currentEvent.contactPhone}</span>
+                    </div>
+                    <div className="phone-btn-arrow" aria-hidden="true">
+                      <span>{lang === 'th' ? 'โทรออก' : 'Call'}</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
+                <p className="contact-explanatory-note">
+                  {t.popUpLocation.callShopNote}
+                </p>
               </div>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </section>
   )
 }
+
