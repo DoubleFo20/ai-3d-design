@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import type { Language, Translations } from '../i18n/translations'
 
 interface BakeryHeroProps {
@@ -7,144 +7,195 @@ interface BakeryHeroProps {
   onExploreMenu: () => void
 }
 
-export const BakeryHero: React.FC<BakeryHeroProps> = ({
-  lang,
-  t,
-  onExploreMenu,
-}) => {
+export const BakeryHero: React.FC<BakeryHeroProps> = ({ lang, t, onExploreMenu }) => {
+  const heroRef = useRef<HTMLElement>(null)
+  const imgRef = useRef<HTMLDivElement>(null)
+  const [loaded, setLoaded] = useState(false)
+
+  // Subtle parallax on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!imgRef.current) return
+      const scrollY = window.scrollY
+      const offset = scrollY * 0.22
+      imgRef.current.style.transform = `translateY(${offset}px) scale(1.06)`
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Entrance animation trigger
+  useEffect(() => {
+    const timer = setTimeout(() => setLoaded(true), 80)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <section className="bakery-hero-section" id="hero">
-      <div className="hero-editorial-container">
-        {/* Left Column: Brand Story & Call to Actions */}
-        <div className="hero-story-col">
-          <div className="hero-badge-pill">
-            <span className="badge-dot" aria-hidden="true" />
-            <span className="badge-text">{t.hero.badge}</span>
-          </div>
-
-          <p className="hero-eyebrow">{t.hero.eyebrow}</p>
-
-          <h1 className="hero-headline">
-            <span className="headline-main">{t.hero.titleMain}</span>{' '}
-            <span className="headline-accent">{t.hero.titleAccent}</span>
-          </h1>
-
-          <p className="hero-narrative">{t.hero.description}</p>
-
-          {/* Quick Craft Indicators */}
-          <div className="hero-spec-row">
-            <div className="hero-spec-item">
-              <span className="spec-indicator" aria-hidden="true">✦</span>
-              <span className="spec-label">{t.hero.specBatch}</span>
-            </div>
-            <div className="hero-spec-divider" />
-            <div className="hero-spec-item">
-              <span className="spec-indicator" aria-hidden="true">✦</span>
-              <span className="spec-label">{t.hero.specButter}</span>
-            </div>
-            <div className="hero-spec-divider" />
-            <div className="hero-spec-item">
-              <span className="spec-indicator" aria-hidden="true">✦</span>
-              <span className="spec-label">{t.hero.specHearth}</span>
-            </div>
-          </div>
-
-          {/* Primary Action Buttons */}
-          <div className="hero-cta-group">
-            <a
-              href="https://www.facebook.com/CroissantNanchao"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-btn-primary"
-            >
-              <span>{t.hero.orderFbBtn}</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
-
-            <button
-              type="button"
-              className="hero-btn-secondary"
-              onClick={onExploreMenu}
-            >
-              <span>{t.hero.exploreMenuBtn}</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Independent Concept Prototype Disclaimer */}
-          <div className="hero-prototype-notice">
-            <span className="notice-icon">ℹ</span>
-            <span className="notice-text">
-              {lang === 'th'
-                ? 'โปรเจกต์นี้อ้างอิงภาพและชื่อเพื่อสร้างต้นแบบเว็บไซต์เบเกอรี่ไทย (Demo Only)'
-                : 'Prototype layout inspired by "Chan Chop Klin Noei" bakery (Concept Demo Only)'}
-            </span>
-          </div>
+    <section className={`hero-c-section${loaded ? ' hero-c-loaded' : ''}`} id="hero" ref={heroRef}>
+      {/* ── Background Image Layer (Parallax) ── */}
+      <div className="hero-c-bg-layer" aria-hidden="true">
+        <div className="hero-c-bg-img-wrap" ref={imgRef}>
+          <img
+            src="/products/demo_hero_croissant.jpg"
+            alt=""
+            className="hero-c-bg-img"
+            loading="eager"
+            onError={(e) => {
+              // Graceful fallback if image missing
+              ;(e.target as HTMLImageElement).style.display = 'none'
+            }}
+          />
         </div>
+        {/* Cinematic gradient overlays */}
+        <div className="hero-c-overlay-left" />
+        <div className="hero-c-overlay-bottom" />
+        <div className="hero-c-overlay-vignette" />
+      </div>
 
-        {/* Right Column: Hero Visual Frame & Craft Composition */}
-        <div className="hero-visual-col">
-          <div className="hero-visual-card">
-            <div className="visual-card-header">
-              <span className="card-tag">ATELIER SHOWCASE</span>
-              <span className="card-batch">BATCH #245°C</span>
+      {/* ── Content Layer ── */}
+      <div className="hero-c-content">
+        <div className="hero-c-inner">
+
+          {/* Left: Editorial Text Column */}
+          <div className="hero-c-text-col">
+            {/* Eyebrow */}
+            <div className="hero-c-eyebrow-row">
+              <span className="hero-c-dot" aria-hidden="true" />
+              <span className="hero-c-eyebrow">{t.hero.badge}</span>
             </div>
 
-            {/* Editorial Bakery Photography Showcase Frame */}
-            <div className="hero-art-frame photo-mode">
-              <div className="hero-photo-container">
+            {/* Main Headline */}
+            <h1 className="hero-c-headline">
+              <span className="hero-c-hl-main">{t.hero.titleMain}</span>
+              <em className="hero-c-hl-accent">{t.hero.titleAccent}</em>
+            </h1>
+
+            {/* Narrative */}
+            <p className="hero-c-narrative">{t.hero.description}</p>
+
+            {/* Craft Specs Row */}
+            <div className="hero-c-spec-strip">
+              <div className="hero-c-spec">
+                <span className="hcs-star" aria-hidden="true">✦</span>
+                <span>{t.hero.specBatch}</span>
+              </div>
+              <span className="hcs-divider" aria-hidden="true" />
+              <div className="hero-c-spec">
+                <span className="hcs-star" aria-hidden="true">✦</span>
+                <span>{t.hero.specButter}</span>
+              </div>
+              <span className="hcs-divider" aria-hidden="true" />
+              <div className="hero-c-spec">
+                <span className="hcs-star" aria-hidden="true">✦</span>
+                <span>{t.hero.specHearth}</span>
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="hero-c-actions">
+              <a
+                href="https://www.facebook.com/CroissantNanchao"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-c-btn-primary"
+                id="hero-fb-cta"
+              >
+                {t.hero.orderFbBtn}
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+              <button
+                type="button"
+                className="hero-c-btn-secondary"
+                onClick={onExploreMenu}
+                id="hero-explore-btn"
+              >
+                {t.hero.exploreMenuBtn}
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Disclaimer */}
+            <p className="hero-c-disclaimer">
+              <span className="hcd-icon">ℹ</span>
+              {lang === 'th'
+                ? 'โปรเจกต์นี้อ้างอิงร้าน "ฉันชอบกลิ่นเนย" เพื่อสร้างต้นแบบเว็บไซต์เบเกอรี่ไทย (Demo Only)'
+                : 'Prototype layout inspired by "Chan Chop Klin Noei" bakery — Concept Demo Only'}
+            </p>
+          </div>
+
+          {/* Right: Floating Product Card */}
+          <div className="hero-c-card-col">
+            <div className="hero-c-product-card" role="img" aria-label={lang === 'th' ? 'ครัวซองต์ครีมสตรอว์เบอร์รี' : 'Strawberry Cream Croissant'}>
+              {/* Card Header */}
+              <div className="hcpc-header">
+                <span className="hcpc-label">SIGNATURE</span>
+                <span className="hcpc-batch">BATCH #245°C</span>
+              </div>
+
+              {/* Product Photo */}
+              <div className="hcpc-photo-wrap">
                 <img
                   src="/products/demo_hero_croissant.jpg"
                   alt={lang === 'th' ? 'ครัวซองต์ครีมสตรอว์เบอร์รี เนยสดแท้' : 'Artisan Strawberry Cream Croissant'}
-                  className="hero-signature-img"
+                  className="hcpc-photo"
                   loading="eager"
                 />
-
-                {/* Aesthetic Floating Signature Badge */}
-                <div className="hero-floating-artisan-tag">
-                  <span className="tag-flair">✦</span>
-                  <span className="tag-title">
-                    {lang === 'th' ? 'ครัวซองต์เนยสดครีมสตรอว์เบอร์รี' : 'Strawberry Cream Croissant'}
+                {/* Demo visual overlay */}
+                <div className="hcpc-demo-pill">
+                  <span className="hcpc-demo-dot" aria-hidden="true" />
+                  <span>
+                    {lang === 'th' ? 'ภาพจำลองแนวคิด' : 'Demo Visual'}
                   </span>
                 </div>
-
-                {/* Concept Visual Notice Overlay */}
-                <div className="hero-demo-visual-pill">
-                  <span className="pill-dot" aria-hidden="true" />
-                  <span className="pill-text">
-                    {lang === 'th'
-                      ? 'ภาพจำลองแนวคิด (Demo Visual) • รอไฟล์ภาพจริงจากร้าน'
-                      : 'Demo Showcase Visual • Awaiting official photo intake'}
+                {/* Floating artisan badge */}
+                <div className="hcpc-artisan-badge">
+                  <span className="hab-star">✦</span>
+                  <span className="hab-name">
+                    {lang === 'th' ? 'ครัวซองต์ครีมสตรอว์เบอร์รี' : 'Strawberry Cream Croissant'}
                   </span>
                 </div>
               </div>
-            </div>
 
-            {/* Bottom Card Footer */}
-            <div className="visual-card-footer">
-              <div className="footer-metric">
-                <span className="metric-num">100%</span>
-                <span className="metric-text">{lang === 'th' ? 'เนยสดแท้' : 'PURE BUTTER'}</span>
-              </div>
-              <div className="footer-metric-divider" />
-              <div className="footer-metric">
-                <span className="metric-num">36h</span>
-                <span className="metric-text">{lang === 'th' ? 'หมักบ่มเย็น' : 'COLD PROOF'}</span>
-              </div>
-              <div className="footer-metric-divider" />
-              <div className="footer-metric">
-                <span className="metric-num">HAND</span>
-                <span className="metric-text">{lang === 'th' ? 'คราฟต์ด้วยมือ' : 'HANDCRAFTED'}</span>
+              {/* Card Metrics */}
+              <div className="hcpc-metrics">
+                <div className="hcpc-metric">
+                  <span className="hcpc-metric-val">100%</span>
+                  <span className="hcpc-metric-lbl">{lang === 'th' ? 'เนยสดแท้' : 'PURE BUTTER'}</span>
+                </div>
+                <div className="hcpc-metric-divider" />
+                <div className="hcpc-metric">
+                  <span className="hcpc-metric-val">36h</span>
+                  <span className="hcpc-metric-lbl">{lang === 'th' ? 'หมักบ่มเย็น' : 'COLD PROOF'}</span>
+                </div>
+                <div className="hcpc-metric-divider" />
+                <div className="hcpc-metric">
+                  <span className="hcpc-metric-val">HAND</span>
+                  <span className="hcpc-metric-lbl">{lang === 'th' ? 'คราฟต์ด้วยมือ' : 'HANDCRAFTED'}</span>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
+
+        {/* Scroll Indicator */}
+        <div className="hero-c-scroll-indicator" aria-hidden="true">
+          <div className="hcsi-line" />
+          <span className="hcsi-label">SCROLL</span>
+        </div>
+      </div>
+
+      {/* Transition Wave to FeaturedCatalog */}
+      <div className="hero-c-wave-transition" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--bg-surface)" />
+        </svg>
       </div>
     </section>
   )
