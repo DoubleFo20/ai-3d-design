@@ -96,71 +96,33 @@ export const BakeryHero: React.FC<BakeryHeroProps> = ({
               <span className="card-batch">BATCH #245°C</span>
             </div>
 
-            {/* Architectural Bakery Illustration Frame */}
-            <div className="hero-art-frame">
-              <svg
-                viewBox="0 0 400 320"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="hero-art-svg"
-                aria-hidden="true"
-              >
-                {/* Subtle radiating warmth rays */}
-                <circle cx="200" cy="160" r="140" stroke="rgba(164, 75, 47, 0.08)" strokeWidth="1" strokeDasharray="4 4" />
-                <circle cx="200" cy="160" r="110" stroke="rgba(164, 75, 47, 0.12)" strokeWidth="1" />
-                
-                {/* Laminated Croissant Architectural Cross-Section Blueprint */}
-                {/* Outer crescent curvature */}
-                <path
-                  d="M100 200 C110 130, 200 100, 300 200 C270 230, 220 245, 200 245 C180 245, 130 230, 100 200 Z"
-                  fill="rgba(194, 148, 93, 0.14)"
-                  stroke="var(--accent)"
-                  strokeWidth="2"
-                />
-                
-                {/* Internal Lamination Flakes (Honeycomb layers) */}
-                <path
-                  d="M125 192 C145 155, 200 135, 275 192"
-                  stroke="var(--accent)"
-                  strokeWidth="1.5"
-                  strokeDasharray="2 3"
-                  opacity="0.8"
-                />
-                <path
-                  d="M145 186 C165 160, 200 150, 255 186"
-                  stroke="var(--accent)"
-                  strokeWidth="1.5"
-                  opacity="0.6"
-                />
-                <path
-                  d="M165 180 C180 168, 200 165, 235 180"
-                  stroke="var(--accent)"
-                  strokeWidth="1.2"
-                  opacity="0.5"
+            {/* Editorial Bakery Photography Showcase Frame */}
+            <div className="hero-art-frame photo-mode">
+              <div className="hero-photo-container">
+                <img
+                  src="/products/demo_hero_croissant.jpg"
+                  alt={lang === 'th' ? 'ครัวซองต์ครีมสตรอว์เบอร์รี เนยสดแท้' : 'Artisan Strawberry Cream Croissant'}
+                  className="hero-signature-img"
+                  loading="eager"
                 />
 
-                {/* Central Honeycomb Pocket Core */}
-                <ellipse cx="200" cy="188" rx="18" ry="10" stroke="var(--accent)" strokeWidth="1.2" fill="rgba(248, 239, 224, 0.6)" />
+                {/* Aesthetic Floating Signature Badge */}
+                <div className="hero-floating-artisan-tag">
+                  <span className="tag-flair">✦</span>
+                  <span className="tag-title">
+                    {lang === 'th' ? 'ครัวซองต์เนยสดครีมสตรอว์เบอร์รี' : 'Strawberry Cream Croissant'}
+                  </span>
+                </div>
 
-                {/* Pedestal plinth line */}
-                <line x1="80" y1="260" x2="320" y2="260" stroke="rgba(37, 35, 31, 0.2)" strokeWidth="1.5" />
-                <line x1="120" y1="268" x2="280" y2="268" stroke="rgba(37, 35, 31, 0.1)" strokeWidth="1" />
-
-                {/* Dimension callout markers */}
-                <line x1="330" y1="120" x2="330" y2="245" stroke="var(--accent)" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.6" />
-                <text x="340" y="185" fontSize="9" fontFamily="var(--font-mono)" fill="var(--text-secondary)" opacity="0.8">
-                  36h FERMENT
-                </text>
-              </svg>
-
-              {/* Center Overlay Tag */}
-              <div className="hero-intake-badge">
-                <span className="intake-badge-title">
-                  {lang === 'th' ? 'ช่องรับภาพถ่ายสินค้าจริง' : 'OFFICIAL PHOTO INTAKE SLOT'}
-                </span>
-                <span className="intake-badge-sub">
-                  {lang === 'th' ? 'เตรียมพร้อมรองรับรูปจากร้าน' : 'Ready for bakery high-res photography'}
-                </span>
+                {/* Concept Visual Notice Overlay */}
+                <div className="hero-demo-visual-pill">
+                  <span className="pill-dot" aria-hidden="true" />
+                  <span className="pill-text">
+                    {lang === 'th'
+                      ? 'ภาพจำลองแนวคิด (Demo Visual) • รอไฟล์ภาพจริงจากร้าน'
+                      : 'Demo Showcase Visual • Awaiting official photo intake'}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -177,8 +139,8 @@ export const BakeryHero: React.FC<BakeryHeroProps> = ({
               </div>
               <div className="footer-metric-divider" />
               <div className="footer-metric">
-                <span className="metric-num">3D</span>
-                <span className="metric-text">{lang === 'th' ? 'โมเดลจำลอง' : 'INTERACTIVE'}</span>
+                <span className="metric-num">HAND</span>
+                <span className="metric-text">{lang === 'th' ? 'คราฟต์ด้วยมือ' : 'HANDCRAFTED'}</span>
               </div>
             </div>
           </div>

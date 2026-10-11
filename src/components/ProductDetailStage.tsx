@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import type { Language, Translations } from '../i18n/translations'
 import type { ProductItem } from '../types/bakery'
-import { PastryScene } from './PastryScene'
 
 interface ProductDetailStageProps {
   products: ProductItem[]
@@ -18,11 +17,7 @@ export const ProductDetailStage: React.FC<ProductDetailStageProps> = ({
   lang,
   t,
 }) => {
-  const [viewMode, setViewMode] = useState<'auto' | 'gallery'>('auto')
-
-  // Whether active product has an active 3D GLB model
-  const hasGLB = Boolean(activeProduct.glbPath)
-  const is3DActive = hasGLB && viewMode !== 'gallery'
+  const [selectedAngle, setSelectedAngle] = useState<number>(1)
 
   return (
     <section className="product-detail-stage-section" id="studio">
@@ -33,7 +28,7 @@ export const ProductDetailStage: React.FC<ProductDetailStageProps> = ({
           <h2 className="section-title">{t.detailStage.sectionTitle}</h2>
         </div>
 
-        {/* Product Switcher Selector Pills */}
+        {/* Product Switcher Selector Pills (3 Bakery Items) */}
         <div className="product-selector-nav" role="tablist" aria-label="Select Pastry Focus">
           {products.map((item, idx) => (
             <button
@@ -46,113 +41,110 @@ export const ProductDetailStage: React.FC<ProductDetailStageProps> = ({
             >
               <span className="pill-index">0{idx + 1}</span>
               <span className="pill-name">{item.name[lang]}</span>
-              {item.glbPath && <span className="pill-3d-tag">3D</span>}
             </button>
           ))}
         </div>
 
         {/* Interactive Dual-Column Showcase Grid */}
         <div className="detail-stage-grid">
-          {/* Left Column: Interactive 3D Canvas OR High-Res Photo Gallery */}
+          {/* Left Column: High-Res Editorial Photo Gallery & Intake Slot */}
           <div className="detail-visual-viewport">
             {/* View Mode Indicator Bar */}
             <div className="viewport-status-bar">
               <div className="status-mode-pill">
                 <span className="dot-live" aria-hidden="true" />
-                <span>
-                  {is3DActive
-                    ? t.detailStage.view3DLabel
-                    : t.detailStage.viewPhotoLabel}
-                </span>
+                <span>{t.detailStage.viewPhotoLabel}</span>
               </div>
-
-              {/* Mode Toggle if product supports both */}
-              {hasGLB && (
-                <div className="mode-toggle-group">
-                  <button
-                    type="button"
-                    className={`toggle-sub-btn ${is3DActive ? 'active' : ''}`}
-                    onClick={() => setViewMode('auto')}
-                  >
-                    3D View
-                  </button>
-                  <button
-                    type="button"
-                    className={`toggle-sub-btn ${!is3DActive ? 'active' : ''}`}
-                    onClick={() => setViewMode('gallery')}
-                  >
-                    Photo Gallery
-                  </button>
-                </div>
-              )}
+              <span className="stage-item-cat-tag">
+                {activeProduct.category.toUpperCase()}
+              </span>
             </div>
 
-            {/* Stage Body */}
-            {is3DActive ? (
-              <div className="active-3d-canvas-wrap">
-                {/* 3D Scene Component with GLB loader */}
-                <PastryScene
-                  activePastry="canele"
-                  onSelectPastry={() => {}}
-                  t={t}
-                />
-              </div>
-            ) : (
-              <div className="active-photo-gallery-wrap">
-                <div className="gallery-main-frame">
-                  {activeProduct.hasRealPhoto ? (
+            {/* Gallery Photo Frame */}
+            <div className="active-photo-gallery-wrap">
+              <div className="gallery-main-frame">
+                {activeProduct.images && activeProduct.images[0] ? (
+                  <div className="gallery-photo-display">
                     <img
                       src={activeProduct.images[0]}
                       alt={activeProduct.name[lang]}
                       className="gallery-main-img"
                     />
-                  ) : (
-                    <div className="gallery-intake-placeholder">
-                      <div className="placeholder-artisan-icon" aria-hidden="true">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                          <rect x="3" y="3" width="18" height="18" rx="2" strokeDasharray="2 2" />
-                          <circle cx="8.5" cy="8.5" r="1.5" />
-                          <polyline points="21 15 16 10 5 21" />
-                        </svg>
+                    {activeProduct.isDemoVisual && (
+                      <div className="gallery-demo-pill">
+                        <span className="dot-mini" aria-hidden="true" />
+                        <span>
+                          {lang === 'th'
+                            ? 'ภาพจำลองแนวคิด (Demo Visual) • รอไฟล์ภาพจริงจากทางร้าน'
+                            : 'Demo Concept Visual • Awaiting official bakery photo'}
+                        </span>
                       </div>
-
-                      <div className="placeholder-text-group">
-                        <h4 className="placeholder-title">
-                          {activeProduct.name[lang]}
-                        </h4>
-                        <p className="placeholder-status-note">
-                          {t.detailStage.noGLBNotice}
-                        </p>
-                        <div className="placeholder-slot-pill">
-                          <span className="slot-label">{t.detailStage.intakeSlotLabel}</span>
-                          <code className="slot-path">{activeProduct.intakeSlotPath}</code>
-                        </div>
-                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="gallery-intake-placeholder">
+                    <div className="placeholder-artisan-icon" aria-hidden="true">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" strokeDasharray="2 2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
+                      </svg>
                     </div>
-                  )}
-                </div>
-
-                {/* Sub-thumbnails Strip */}
-                <div className="gallery-thumb-strip">
-                  <div className="thumb-item active">
-                    <span>Angle 01 (Front Beauty)</span>
+                    <h4 className="placeholder-title">{activeProduct.name[lang]}</h4>
+                    <p className="placeholder-status-note">{t.detailStage.noGLBNotice}</p>
                   </div>
-                  <div className="thumb-item">
-                    <span>Angle 02 (Top Texture)</span>
-                  </div>
-                  <div className="thumb-item">
-                    <span>Angle 03 (Crumb Detail)</span>
-                  </div>
-                </div>
+                )}
               </div>
-            )}
+
+              {/* Sub-thumbnails Angle Strip */}
+              <div className="gallery-thumb-strip">
+                <button
+                  type="button"
+                  className={`thumb-item ${selectedAngle === 1 ? 'active' : ''}`}
+                  onClick={() => setSelectedAngle(1)}
+                >
+                  <span className="thumb-idx">01</span>
+                  <span>{lang === 'th' ? 'มุมมองหลัก (Front View)' : 'Front Beauty'}</span>
+                </button>
+                <button
+                  type="button"
+                  className={`thumb-item ${selectedAngle === 2 ? 'active' : ''}`}
+                  onClick={() => setSelectedAngle(2)}
+                >
+                  <span className="thumb-idx">02</span>
+                  <span>{lang === 'th' ? 'มิติชั้นแป้ง (Lamination)' : 'Lamination Detail'}</span>
+                </button>
+                <button
+                  type="button"
+                  className={`thumb-item ${selectedAngle === 3 ? 'active' : ''}`}
+                  onClick={() => setSelectedAngle(3)}
+                >
+                  <span className="thumb-idx">03</span>
+                  <span>{lang === 'th' ? 'สัมผัสครีมและท็อปปิ้ง' : 'Cream & Fruit Close-up'}</span>
+                </button>
+              </div>
+
+              {/* Designated File Intake Slot Card */}
+              <div className="gallery-intake-info-box">
+                <div className="intake-info-header">
+                  <span className="intake-icon" aria-hidden="true">📁</span>
+                  <span className="intake-info-title">{t.detailStage.intakeSlotLabel}</span>
+                </div>
+                <code className="intake-file-path">{activeProduct.intakeSlotPath}</code>
+                <p className="intake-file-hint">
+                  {lang === 'th'
+                    ? 'เมื่อนำไฟล์ภาพจริงจากเพจร้านมาวางที่พาธนี้ ระบบจะแสดงผลภาพจริงแทนภาพจำลองทันที'
+                    : 'Place official high-res image here to replace the conceptual demo photo seamlessly.'}
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Artisan Specifications & Inquire CTA */}
           <div className="detail-info-col">
             <div className="info-header-block">
               <span className="info-badge">
-                {hasGLB ? '3D VERIFIED' : 'DEMO CATALOG ITEM'}
+                {activeProduct.category.toUpperCase()} • CRAFT SHOWCASE
               </span>
               <h3 className="info-title">{activeProduct.name[lang]}</h3>
               {activeProduct.subtitle && (

@@ -27,23 +27,14 @@ export const FacebookFeedPreview: React.FC<FacebookFeedPreviewProps> = ({
         <div className="curated-architecture-banner">
           <div className="banner-badge-group">
             <span className="dot-pulse" aria-hidden="true" />
-            <span className="badge-tag">{t.facebookFeed.curatedBadge}</span>
+            <span className="badge-tag">{t.facebookFeed.demoFeedBadge}</span>
           </div>
-          <p className="banner-info">{t.facebookFeed.curatedDesc}</p>
+          <p className="banner-info">{t.facebookFeed.demoFeedDesc}</p>
         </div>
 
         {/* Facebook Post Cards Grid */}
         <div className="facebook-posts-grid">
           {posts.map((post) => {
-            const dateStr = new Date(post.publishedTime).toLocaleDateString(
-              lang === 'th' ? 'th-TH' : 'en-US',
-              {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              }
-            )
-
             return (
               <article key={post.postId} className="facebook-post-card">
                 {/* Post Card Header */}
@@ -55,27 +46,41 @@ export const FacebookFeedPreview: React.FC<FacebookFeedPreviewProps> = ({
                     <div className="author-meta">
                       <span className="author-name">{post.authorName}</span>
                       <span className="post-date">
-                        {t.facebookFeed.postedOn} {dateStr}
+                        {t.facebookFeed.postedOn} {post.publishedTime}
                       </span>
                     </div>
                   </div>
 
                   <span className="post-class-badge">
-                    {post.productClassification}
+                    {post.productClassification.toUpperCase()}
                   </span>
                 </div>
 
                 {/* Post Media Framing / Intake Visual */}
                 <div className="post-media-frame">
-                  <div className="post-media-placeholder">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="2" y="2" width="20" height="20" rx="4" />
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                    </svg>
-                    <span className="post-media-label">
-                      {lang === 'th' ? 'ภาพโพสต์จากเพจ Facebook' : 'Facebook Page Photo'}
-                    </span>
-                  </div>
+                  {post.image ? (
+                    <div className="post-media-wrap">
+                      <img
+                        src={post.image}
+                        alt="Facebook Post Media"
+                        className="post-media-img"
+                        loading="lazy"
+                      />
+                      <div className="post-media-demo-badge">
+                        <span>{t.facebookFeed.demoFeedBadge}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="post-media-placeholder">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <rect x="2" y="2" width="20" height="20" rx="4" />
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                      </svg>
+                      <span className="post-media-label">
+                        {lang === 'th' ? 'ภาพโพสต์จากเพจ Facebook' : 'Facebook Page Photo'}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Post Message Excerpt */}

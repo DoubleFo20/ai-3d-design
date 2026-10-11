@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar'
 import { BakeryHero } from './components/BakeryHero'
 import { FeaturedCatalog } from './components/FeaturedCatalog'
 import { ProductDetailStage } from './components/ProductDetailStage'
+import { Developer3DPreview } from './components/Developer3DPreview'
 import { FacebookFeedPreview } from './components/FacebookFeedPreview'
 import { AboutBakery } from './components/AboutBakery'
 import { ContactSection } from './components/ContactSection'
@@ -13,6 +14,7 @@ import { translations, type Language } from './i18n/translations'
 import {
   defaultCatalogProvider,
   MOCK_PRODUCTS,
+  DEVELOPER_3D_ASSET,
   CURATED_FACEBOOK_POSTS,
 } from './services/catalogProvider'
 import type { ProductItem, FacebookPostItem } from './types/bakery'
@@ -106,7 +108,7 @@ export default function App() {
           t={t}
         />
 
-        {/* 4. Product Detail & Interactive 3D / Photo Showcase Stage */}
+        {/* 4. Product Detail & Photo Showcase Stage (3 Bakery Items) */}
         <ProductDetailStage
           products={products}
           activeProduct={activeProduct}
@@ -115,7 +117,14 @@ export default function App() {
           t={t}
         />
 
-        {/* 5. Latest From Facebook Preview (Curated Data Provider) */}
+        {/* 5. 3D WebGL Engine & Asset Pipeline (Developer Preview) */}
+        <Developer3DPreview
+          caneleAsset={DEVELOPER_3D_ASSET}
+          lang={lang}
+          t={t}
+        />
+
+        {/* 6. Latest From Facebook Preview (Simulated Demo Feed) */}
         <FacebookFeedPreview
           posts={posts}
           lang={lang}

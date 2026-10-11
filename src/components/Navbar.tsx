@@ -51,14 +51,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
           <a href="#studio" className="nav-link">
             <span className="nav-index">02</span>
-            <span>{lang === 'th' ? 'มุมมอง 3D & รูปภาพ' : '3D & Gallery'}</span>
+            <span>{lang === 'th' ? 'รูปภาพสินค้า' : 'Gallery'}</span>
+          </a>
+          <a href="#developer-3d" className="nav-link">
+            <span className="nav-index">03</span>
+            <span>{lang === 'th' ? 'ห้องทดลอง 3D' : '3D Lab'}</span>
           </a>
           <a href="#facebook" className="nav-link">
-            <span className="nav-index">03</span>
+            <span className="nav-index">04</span>
             <span>{t.nav.heritage}</span>
           </a>
           <a href="#about" className="nav-link">
-            <span className="nav-index">04</span>
+            <span className="nav-index">05</span>
             <span>{t.nav.atelier}</span>
           </a>
         </nav>

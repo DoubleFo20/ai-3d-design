@@ -50,12 +50,13 @@ export const MOCK_PRODUCTS: ProductItem[] = [
       en: 'Laminated Pure Butter Pastry with Velvety Cream & Fresh Strawberry',
     },
     description: {
-      th: 'ครัวซองต์สูตรเนยสดแท้ อบจนแป้งกรอบเป็นชั้นโปร่งด้านนอกและนุ่มชุ่มฉ่ำด้านใน สอดไส้ครีมสดรสละมุน ไม่หวานเลี่ยน ท็อปด้วยผลสตรอว์เบอร์รีสดตัดรสชาติอย่างลงตัว (ชื่อและข้อมูลนี้เป็นตัวอย่างทดลองสำหรับการจัดวางหน้าเว็บ)',
-      en: 'Artisan croissant made with pure butter, baked to a delicate honeycomb crust. Filled with light diplomat cream and topped with fresh strawberries. (Draft placeholder name & description for prototype evaluation).',
+      th: 'ครัวซองต์สูตรเนยสดแท้ อบจนแป้งกรอบเป็นชั้นโปร่งด้านนอกและนุ่มชุ่มฉ่ำด้านใน สอดไส้ครีมสดรสละมุน ไม่หวานเลี่ยน ท็อปด้วยผลสตรอว์เบอร์รีสดตัดรสชาติอย่างลงตัว (ชื่อและภาพจำลองแนวคิดเพื่อการศึกษาการออกแบบดิจิทัล)',
+      en: 'Artisan croissant made with pure butter, baked to a delicate honeycomb crust. Filled with light diplomat cream and topped with fresh strawberries. (Concept demonstration visual for showcase evaluation).',
     },
-    images: ['/products/strawberry_croissant_intake.jpg'],
+    images: ['/products/demo_strawberry_croissant.jpg'],
     hasRealPhoto: false,
-    intakeSlotPath: 'public/products/strawberry_croissant_intake.jpg',
+    isDemoVisual: true,
+    intakeSlotPath: 'public/products/strawberry_croissant_official.jpg',
     price: null,
     priceDisplayNote: {
       th: 'สอบถามราคาตามรอบอบทาง Facebook',
@@ -64,7 +65,7 @@ export const MOCK_PRODUCTS: ProductItem[] = [
     facebookPostUrl: 'https://www.facebook.com/CroissantNanchao',
     postDate: null,
     status: 'demo',
-    glbPath: null, // No GLB yet -> Activates Photo Gallery view
+    glbPath: null, // No GLB -> Activates Photo Gallery view
     category: 'croissant',
     tags: [
       { th: 'เนยสดแท้', en: 'Pure Butter' },
@@ -86,7 +87,7 @@ export const MOCK_PRODUCTS: ProductItem[] = [
       },
       {
         label: { th: 'สถานะรูปภาพ', en: 'Photo Status' },
-        value: { th: 'รอภาพถ่ายจริงจากร้าน', en: 'Awaiting Official Photo Intake' },
+        value: { th: 'ภาพจำลองแนวคิด • รอภาพถ่ายจริงจากร้าน', en: 'Demo Concept Visual • Awaiting Official Photo Intake' },
       },
     ],
   },
@@ -101,12 +102,13 @@ export const MOCK_PRODUCTS: ProductItem[] = [
       en: 'Crisp Danish Pastry with Vanilla Bean Custard & Seasonal Fruits',
     },
     description: {
-      th: 'แป้งเดนิชสูตรพิเศษกรอบเป็นชั้นเบา สอดไส้คัสตาร์ดวานิลลาหอมเนียน แต่งหน้าด้วยผลไม้สดหลากหลายชนิดตามฤดูกาล ให้รสสัมผัสสดชื่นตัดกับความหอมมันของเนยสด (ชื่อและข้อมูลนี้เป็นตัวอย่างทดลองสำหรับการจัดวางหน้าเว็บ)',
-      en: 'Flaky Danish pastry folded with rich butter, layered with aromatic vanilla custard, and generously topped with seasonal fresh fruits. (Draft placeholder name & description for prototype evaluation).',
+      th: 'แป้งเดนิชสูตรพิเศษกรอบเป็นชั้นเบา สอดไส้คัสตาร์ดวานิลลาหอมเนียน แต่งหน้าด้วยผลไม้สดหลากหลายชนิดตามฤดูกาล ให้รสสัมผัสสดชื่นตัดกับความหอมมันของเนยสด (ชื่อและภาพจำลองแนวคิดเพื่อการศึกษาการออกแบบดิจิทัล)',
+      en: 'Flaky Danish pastry folded with rich butter, layered with aromatic vanilla custard, and generously topped with seasonal fresh fruits. (Concept demonstration visual for showcase evaluation).',
     },
-    images: ['/products/mixed_fruit_danish_intake.jpg'],
+    images: ['/products/demo_mixed_fruit_danish.jpg'],
     hasRealPhoto: false,
-    intakeSlotPath: 'public/products/mixed_fruit_danish_intake.jpg',
+    isDemoVisual: true,
+    intakeSlotPath: 'public/products/mixed_fruit_danish_official.jpg',
     price: null,
     priceDisplayNote: {
       th: 'สอบถามราคาตามรอบอบทาง Facebook',
@@ -115,7 +117,7 @@ export const MOCK_PRODUCTS: ProductItem[] = [
     facebookPostUrl: 'https://www.facebook.com/CroissantNanchao',
     postDate: null,
     status: 'demo',
-    glbPath: null, // No GLB yet -> Activates Photo Gallery view
+    glbPath: null, // No GLB -> Activates Photo Gallery view
     category: 'danish',
     tags: [
       { th: 'แป้งเดนิชกรอบ', en: 'Flaky Danish' },
@@ -137,7 +139,7 @@ export const MOCK_PRODUCTS: ProductItem[] = [
       },
       {
         label: { th: 'สถานะรูปภาพ', en: 'Photo Status' },
-        value: { th: 'รอภาพถ่ายจริงจากร้าน', en: 'Awaiting Official Photo Intake' },
+        value: { th: 'ภาพจำลองแนวคิด • รอภาพถ่ายจริงจากร้าน', en: 'Demo Concept Visual • Awaiting Official Photo Intake' },
       },
     ],
   },
@@ -152,12 +154,13 @@ export const MOCK_PRODUCTS: ProductItem[] = [
       en: 'Caramelized Crispy Crust with Smooth Cream & Roasted Nuts',
     },
     description: {
-      th: 'ขนมอบแป้งพายกรอบกลิ่นเนยเตาอบ สอดไส้ครีมเนียนนุ่ม ท็อปปิ้งด้วยถั่วคั่วพรีเมียมเคลือบคาราเมลบางเบา ให้สัมผัสกรุบกรอบเคี้ยวเพลินควบคู่กับความหอมของเนยแท้ (ชื่อและข้อมูลนี้เป็นตัวอย่างทดลองสำหรับการจัดวางหน้าเว็บ)',
-      en: 'Crisp layered butter pastry layered with smooth diplomat cream and crowned with lightly caramelized roasted nuts for a delightful textural crunch. (Draft placeholder name & description for prototype evaluation).',
+      th: 'ขนมอบแป้งพายกรอบกลิ่นเนยเตาอบ สอดไส้ครีมเนียนนุ่ม ท็อปปิ้งด้วยถั่วคั่วพรีเมียมเคลือบคาราเมลบางเบา ให้สัมผัสกรุบกรอบเคี้ยวเพลินควบคู่กับความหอมของเนยแท้ (ชื่อและภาพจำลองแนวคิดเพื่อการศึกษาการออกแบบดิจิทัล)',
+      en: 'Crisp layered butter pastry layered with smooth diplomat cream and crowned with lightly caramelized roasted nuts for a delightful textural crunch. (Concept demonstration visual for showcase evaluation).',
     },
-    images: ['/products/nut_cream_pastry_intake.jpg'],
+    images: ['/products/demo_nut_cream_pastry.jpg'],
     hasRealPhoto: false,
-    intakeSlotPath: 'public/products/nut_cream_pastry_intake.jpg',
+    isDemoVisual: true,
+    intakeSlotPath: 'public/products/nut_cream_pastry_official.jpg',
     price: null,
     priceDisplayNote: {
       th: 'สอบถามราคาตามรอบอบทาง Facebook',
@@ -166,7 +169,7 @@ export const MOCK_PRODUCTS: ProductItem[] = [
     facebookPostUrl: 'https://www.facebook.com/CroissantNanchao',
     postDate: null,
     status: 'demo',
-    glbPath: null, // No GLB yet -> Activates Photo Gallery view
+    glbPath: null, // No GLB -> Activates Photo Gallery view
     category: 'pastry',
     tags: [
       { th: 'ถั่วคั่วหอม', en: 'Roasted Nuts' },
@@ -188,77 +191,81 @@ export const MOCK_PRODUCTS: ProductItem[] = [
       },
       {
         label: { th: 'สถานะรูปภาพ', en: 'Photo Status' },
-        value: { th: 'รอภาพถ่ายจริงจากร้าน', en: 'Awaiting Official Photo Intake' },
-      },
-    ],
-  },
-  {
-    id: 'canele-study',
-    name: {
-      th: 'กานาเล เดอ บอร์โด (3D ศึกษา)',
-      en: 'Canelé de Bordeaux (3D Study)',
-    },
-    subtitle: {
-      th: 'โมเดล 3D ทดลอง PBR ฉบับสมบูรณ์ (พร้อมหมุนดู 360 องศา)',
-      en: 'Interactive 3D PBR Asset (~85% Photoreal Benchmark)',
-    },
-    description: {
-      th: 'โมเดล 3D ของกานาเลที่สร้างขึ้นในระบบ ATELIER 3D เพื่อสาธิตความสามารถของตัวแสดงผล 3D Viewer Interactive รองรับการหมุน 360°, ส่องโครงลวดตาข่าย และทดสอบระบบโหลด GLB',
-      en: 'The benchmark 3D PBR asset retained to demonstrate the interactive 3D viewer capabilities, full OrbitControls, wireframe inspection, and GLB asset loading pipeline.',
-    },
-    images: ['/models/textures/canele_basecolor.png'],
-    hasRealPhoto: false,
-    intakeSlotPath: 'public/models/canele.glb',
-    price: null,
-    priceDisplayNote: {
-      th: 'โมเดลสำหรับทดสอบ 3D Viewer',
-      en: '3D Viewer Demonstration Model',
-    },
-    facebookPostUrl: 'https://www.facebook.com/CroissantNanchao',
-    postDate: null,
-    status: 'demo',
-    glbPath: '/models/canele.glb', // Active GLB -> Activates 3D Viewer!
-    category: 'specialty',
-    tags: [
-      { th: '3D Interactive', en: '3D Interactive' },
-      { th: 'GLB Production', en: 'GLB Production' },
-      { th: 'PBR Shaders', en: 'PBR Shaders' },
-    ],
-    highlights: [
-      {
-        label: { th: 'ระบบแสดงผล', en: 'Renderer' },
-        value: { th: 'WebGL Three.js 60 FPS', en: 'WebGL Three.js 60 FPS' },
-      },
-      {
-        label: { th: 'โพลีกอน', en: 'Geometry' },
-        value: { th: '63,840 Triangles (1 Draw Call)', en: '63,840 Triangles (1 Draw Call)' },
-      },
-      {
-        label: { th: 'เนื้อสัมผัส', en: 'Textures' },
-        value: { th: '2K PBR (BaseColor, Normal, ORM)', en: '2K PBR (BaseColor, Normal, ORM)' },
-      },
-      {
-        label: { th: 'การควบคุม', en: 'Interaction' },
-        value: { th: 'Drag Rotate • Zoom • Reset', en: 'Drag Rotate • Zoom • Reset' },
+        value: { th: 'ภาพจำลองแนวคิด • รอภาพถ่ายจริงจากร้าน', en: 'Demo Concept Visual • Awaiting Official Photo Intake' },
       },
     ],
   },
 ]
 
 /**
- * Curated Facebook Post Ingestion Blueprints
+ * Benchmark 3D Engineering Asset preserved for Developer Preview section
+ */
+export const DEVELOPER_3D_ASSET: ProductItem = {
+  id: 'canele-study',
+  name: {
+    th: 'กานาเล เดอ บอร์โด (3D ศึกษา)',
+    en: 'Canelé de Bordeaux (3D Study)',
+  },
+  subtitle: {
+    th: 'โมเดล 3D ทดลอง PBR ฉบับสมบูรณ์ (พร้อมหมุนดู 360 องศา)',
+    en: 'Interactive 3D PBR Asset (~85% Photoreal Benchmark)',
+  },
+  description: {
+    th: 'โมเดล 3D ของกานาเลที่สร้างขึ้นในระบบ ATELIER 3D เพื่อสาธิตความสามารถของตัวแสดงผล 3D Viewer Interactive รองรับการหมุน 360°, ส่องโครงลวดตาข่าย และทดสอบระบบโหลด GLB',
+    en: 'The benchmark 3D PBR asset retained to demonstrate the interactive 3D viewer capabilities, full OrbitControls, wireframe inspection, and GLB asset loading pipeline.',
+  },
+  images: ['/models/textures/canele_basecolor.png'],
+  hasRealPhoto: false,
+  intakeSlotPath: 'public/models/canele.glb',
+  price: null,
+  priceDisplayNote: {
+    th: 'โมเดลสำหรับทดสอบ 3D Viewer',
+    en: '3D Viewer Demonstration Model',
+  },
+  facebookPostUrl: 'https://www.facebook.com/CroissantNanchao',
+  postDate: null,
+  status: 'demo',
+  glbPath: '/models/canele.glb',
+  category: 'specialty',
+  tags: [
+    { th: '3D Interactive', en: '3D Interactive' },
+    { th: 'GLB Production', en: 'GLB Production' },
+    { th: 'PBR Shaders', en: 'PBR Shaders' },
+  ],
+  highlights: [
+    {
+      label: { th: 'ระบบแสดงผล', en: 'Renderer' },
+      value: { th: 'WebGL Three.js 60 FPS', en: 'WebGL Three.js 60 FPS' },
+    },
+    {
+      label: { th: 'โพลีกอน', en: 'Geometry' },
+      value: { th: '63,840 Triangles (1 Draw Call)', en: '63,840 Triangles (1 Draw Call)' },
+    },
+    {
+      label: { th: 'เนื้อสัมผัส', en: 'Textures' },
+      value: { th: '2K PBR (BaseColor, Normal, ORM)', en: '2K PBR (BaseColor, Normal, ORM)' },
+    },
+    {
+      label: { th: 'การควบคุม', en: 'Interaction' },
+      value: { th: 'Drag Rotate • Zoom • Reset', en: 'Drag Rotate • Zoom • Reset' },
+    },
+  ],
+}
+
+/**
+ * Curated Facebook Post Ingestion Blueprints (Simulated Feed Slots)
  * Demonstrates the curated post pipeline without scraping or live token coupling.
  */
 export const CURATED_FACEBOOK_POSTS: FacebookPostItem[] = [
   {
     postId: 'post-fb-001',
     message: {
-      th: 'ครัวซองต์อบสดใหม่จากเตาเช้าวันนี้ กลิ่นเนยหอมฟุ้งทั่วร้าน แป้งกรอบฟูเป็นชั้น สอดไส้ครีมสดสตรอว์เบอร์รีพร้อมเสิร์ฟแล้วค่ะ 🍓🥐',
-      en: 'Freshly baked croissants out of the hearth this morning! Fragrant pure butter aroma, crispy flaky layers, filled with fresh strawberry cream ready to serve 🍓🥐',
+      th: '[ตัวอย่างการจัดวาง Demo Feed] ครัวซองต์อบสดใหม่จากเตาเช้าวันนี้ กลิ่นเนยหอมฟุ้งทั่วร้าน แป้งกรอบฟูเป็นชั้น สอดไส้ครีมสดสตรอว์เบอร์รีพร้อมเสิร์ฟ 🍓🥐',
+      en: '[Simulated Demo Feed] Freshly baked croissants out of the hearth this morning! Fragrant pure butter aroma, crispy flaky layers, filled with fresh strawberry cream 🍓🥐',
     },
-    image: '/products/strawberry_croissant_intake.jpg',
+    image: '/products/demo_strawberry_croissant.jpg',
     permalink: 'https://www.facebook.com/CroissantNanchao',
-    publishedTime: '2026-10-10T08:30:00Z',
+    publishedTime: 'Demo Slot #01',
     productClassification: 'croissant',
     approvalStatus: 'approved',
     authorName: 'ฉันชอบกลิ่นเนย',
@@ -266,12 +273,12 @@ export const CURATED_FACEBOOK_POSTS: FacebookPostItem[] = [
   {
     postId: 'post-fb-002',
     message: {
-      th: 'เดนิชผลไม้รวม ผลไม้สดฉ่ำตัดกับคัสตาร์ดวานิลลานุ่มนวล แป้งเดนิชกรอบสะท้อนแสงคาราเมล อบจำนวนจำกัดในแต่ละรอบนะคะ ✨',
-      en: 'Mixed Fruit Danish — juicy fresh fruits paired with velvety vanilla custard on golden crispy pastry. Limited batch each bake ✨',
+      th: '[ตัวอย่างการจัดวาง Demo Feed] เดนิชผลไม้รวม ผลไม้สดฉ่ำตัดกับคัสตาร์ดวานิลลานุ่มนวล แป้งเดนิชกรอบสะท้อนแสงคาราเมล อบจำนวนจำกัดในแต่ละรอบ ✨',
+      en: '[Simulated Demo Feed] Mixed Fruit Danish — juicy fresh fruits paired with velvety vanilla custard on golden crispy pastry. Limited batch each bake ✨',
     },
-    image: '/products/mixed_fruit_danish_intake.jpg',
+    image: '/products/demo_mixed_fruit_danish.jpg',
     permalink: 'https://www.facebook.com/CroissantNanchao',
-    publishedTime: '2026-10-09T09:15:00Z',
+    publishedTime: 'Demo Slot #02',
     productClassification: 'danish',
     approvalStatus: 'approved',
     authorName: 'ฉันชอบกลิ่นเนย',
@@ -279,12 +286,12 @@ export const CURATED_FACEBOOK_POSTS: FacebookPostItem[] = [
   {
     postId: 'post-fb-003',
     message: {
-      th: 'สำหรับคนรักถั่วและคาราเมล ขนมอบหน้าครีมและถั่วคั่วสดใหม่ กรอบ มัน หวานน้อย ทานคู่กับกาแฟยามเช้าเข้ากันที่สุดค่ะ ☕🥜',
-      en: 'For nut and caramel lovers: freshly roasted nut and cream pastry. Crisp, nutty, gently sweet, perfect pairing with morning coffee ☕🥜',
+      th: '[ตัวอย่างการจัดวาง Demo Feed] สำหรับคนรักถั่วและคาราเมล ขนมอบหน้าครีมและถั่วคั่วสดใหม่ กรอบ มัน หวานน้อย ทานคู่กับกาแฟยามเช้า ☕🥜',
+      en: '[Simulated Demo Feed] For nut and caramel lovers: freshly roasted nut and cream pastry. Crisp, nutty, gently sweet, perfect pairing with morning coffee ☕🥜',
     },
-    image: '/products/nut_cream_pastry_intake.jpg',
+    image: '/products/demo_nut_cream_pastry.jpg',
     permalink: 'https://www.facebook.com/CroissantNanchao',
-    publishedTime: '2026-10-08T10:00:00Z',
+    publishedTime: 'Demo Slot #03',
     productClassification: 'specialty',
     approvalStatus: 'approved',
     authorName: 'ฉันชอบกลิ่นเนย',

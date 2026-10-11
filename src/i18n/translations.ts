@@ -62,6 +62,9 @@ export interface Translations {
     danishFilter: string
     pastryFilter: string
     intakeGuide: string
+    demoVisualBadge: string
+    intakeBannerTitle: string
+    intakeBannerDesc: string
   }
   detailStage: {
     sectionEyebrow: string
@@ -76,12 +79,31 @@ export interface Translations {
     verificationTitle: string
     verificationDesc: string
   }
+  dev3D: {
+    sectionEyebrow: string
+    sectionTitle: string
+    sectionSubtitle: string
+    benchmarkBadge: string
+    benchmarkTitle: string
+    benchmarkDesc: string
+    metricPoly: string
+    metricDraco: string
+    metricFPS: string
+    metricPBR: string
+    orbitHint: string
+    autoSpinLabel: string
+    wireframeLabel: string
+    resetLabel: string
+  }
   facebookFeed: {
     sectionEyebrow: string
     sectionTitle: string
     sectionSubtitle: string
     curatedBadge: string
     curatedDesc: string
+    demoFeedBadge: string
+    demoFeedDesc: string
+    simulatedSlot: string
     openPostBtn: string
     visitPageBtn: string
     postedOn: string
@@ -245,10 +267,14 @@ export const translations: Record<Language, Translations> = {
       sectionEyebrow: 'MENU COLLECTION',
       sectionTitle: 'ขนมอบแนะนำจากเตา',
       sectionSubtitle:
-        'คัดสรรเมนูยอดนิยมจากเพจร้าน ขนมอบสดใหม่หอมเนยแท้ กรอบนอกนุ่มใน (ข้อมูลทดลองสำหรับ Prototype)',
+        'คัดสรรเมนูยอดนิยมจากเพจร้าน ขนมอบสดใหม่หอมเนยแท้ กรอบนอกนุ่มใน (ข้อมูลและภาพจำลองแนวคิดสำหรับ Showcase Prototype)',
       photoSlotNotice:
         'ช่องรับรูปภาพสินค้าจริง • เตรียมพร้อมรับรูปถ่ายความละเอียดสูงจากร้านโดยตรง',
       demoBadge: 'DEMO CATALOG',
+      demoVisualBadge: 'ภาพจำลองแนวคิด (Demo Visual)',
+      intakeBannerTitle: 'ระบบจัดเก็บและรับภาพถ่ายสินค้าจริง (Asset Intake Protocol)',
+      intakeBannerDesc:
+        'เว็บไซต์แสดงภาพจำลองแนวคิดแบบ Editorial Photography เพื่อประเมินสุนทรียภาพและความเหมาะสมในการนำเสนอ ท่านสามารถวางไฟล์ภาพจริงลงใน public/products/ ตามชื่อที่กำหนดเพื่อเปลี่ยนเป็นภาพสินค้าจริงได้ทันที',
       inquirePrice: 'สอบถามราคาตามรอบอบ',
       viewDetailBtn: 'ดูรายละเอียด',
       view3DBtn: 'เปิดโหมด 3D',
@@ -260,8 +286,8 @@ export const translations: Record<Language, Translations> = {
       intakeGuide: 'วางไฟล์รูปในโฟลเดอร์ public/products/ เพื่อให้แสดงรูปจริงทันที',
     },
     detailStage: {
-      sectionEyebrow: 'PRODUCT FOCUS & 3D STUDIO',
-      sectionTitle: 'รายละเอียดขนมอบและมิติ 3 มิติ',
+      sectionEyebrow: 'ARTISAN PRODUCT GALLERY',
+      sectionTitle: 'สุนทรียภาพและรายละเอียดขนมอบ',
       view3DLabel: '3D INTERACTIVE VIEW',
       viewPhotoLabel: 'PRODUCT PHOTO GALLERY',
       noGLBNotice:
@@ -275,17 +301,38 @@ export const translations: Record<Language, Translations> = {
       verificationDesc:
         'ข้อมูล รายละเอียด และรูปภาพในส่วนนี้เป็นข้อมูลจำลองเพื่อการศึกษาการจัดวางระบบ (Layout Prototype) สามารถอัปเดตข้อมูลจริงได้ทันทีเมื่อได้รับการยืนยันจากทางร้าน',
     },
+    dev3D: {
+      sectionEyebrow: '3D LAB & ASSET PIPELINE',
+      sectionTitle: 'ระบบทดลอง 3D WebGL (Developer Preview)',
+      sectionSubtitle:
+        'ส่วนประเมินศักยภาพเทคโนโลยี 3D Interactive สำหรับนักพัฒนาและผู้บริหาร — สาธิตการโหลดโมเดล GLB ที่บีบอัดด้วย Draco และการเรนเดอร์ PBR เสมือนจริง',
+      benchmarkBadge: 'BENCHMARK ASSET (~85% PHOTOREAL)',
+      benchmarkTitle: 'กานาเล เดอ บอร์โด (Canelé 3D Study)',
+      benchmarkDesc:
+        'โมเดลอ้างอิงเพื่อทดสอบประสิทธิภาพ Three.js, WebGL Context, OrbitControls และ Draco Decompression บนทุกอุปกรณ์โดยไม่ลดทอนความลื่นไหล',
+      metricPoly: '63,840 Triangles (1 Draw Call)',
+      metricDraco: 'Draco Decompressed (590 KB)',
+      metricFPS: '60 FPS Hardware Accelerated',
+      metricPBR: '2K PBR Shaders (BaseColor, Normal, ORM)',
+      orbitHint: 'คลิกค้างแล้วลากเพื่อหมุน 360° • สกอร์ลเพื่อซูมเข้า/ออก',
+      autoSpinLabel: 'หมุนอัตโนมัติ (Auto Spin)',
+      wireframeLabel: 'โครงลวดตาข่าย (Wireframe)',
+      resetLabel: 'รีเซ็ตมุมกล้อง (Reset Camera)',
+    },
     facebookFeed: {
       sectionEyebrow: 'LATEST FROM FACEBOOK',
-      sectionTitle: 'อัปเดตล่าสุดจากเพจ Facebook',
+      sectionTitle: 'ตัวอย่างฟีดจำลองจาก Facebook (Demo Feed)',
       sectionSubtitle:
-        'โครงสร้างระบบคัดเลือกโพสต์สินค้าจากหน้าเพจ "ฉันชอบกลิ่นเนย" โดยไม่ต้อง Scrape และปลอดภัยตามมาตรฐาน API',
+        'โครงสร้างระบบคัดเลือกโพสต์สินค้าจากหน้าเพจ "ฉันชอบกลิ่นเนย" โดยไม่ต้อง Scrape และปลอดภัยตามมาตรฐาน API (ข้อมูลจำลองเพื่อทดสอบเลย์เอาต์)',
       curatedBadge: 'CURATED FEED PROTOTYPE',
       curatedDesc:
         'ระบบเตรียมโครงสร้าง Data Provider แยกส่วน พร้อมเชื่อมต่อ Facebook Graph API เมื่อได้รับสิทธิ์ยืนยันจากร้าน',
+      demoFeedBadge: 'DEMO FEED • จำลองการนำเข้า',
+      demoFeedDesc: 'โพสต์และวันที่ด้านล่างเป็นข้อมูลจำลองเพื่อทดสอบการจัดวางเค้าโครง ไม่ใช่โพสต์จริงจากเพจ',
+      simulatedSlot: 'ช่องจำลองโพสต์ (Demo Slot)',
       openPostBtn: 'ดูโพสต์นี้บน Facebook ↗',
       visitPageBtn: 'เยี่ยมชมเพจ Facebook ของร้าน ↗',
-      postedOn: 'เผยแพร่เมื่อ:',
+      postedOn: 'ช่องจำลองวันที่:',
     },
     about: {
       sectionEyebrow: 'ABOUT THE BAKERY',
@@ -478,10 +525,14 @@ export const translations: Record<Language, Translations> = {
       sectionEyebrow: 'MENU COLLECTION',
       sectionTitle: 'Artisan Pastry Showcase',
       sectionSubtitle:
-        'Curated selection inspired by the bakery’s Facebook page. Flaky, fragrant with pure butter, baked fresh in batches. (Experimental demo catalog).',
+        'Curated selection inspired by the bakery’s Facebook page. Flaky, fragrant with pure butter, baked fresh in batches. (Concept demo visual showcase).',
       photoSlotNotice:
         'Official Photo Intake Slot • Ready to receive high-resolution bakery photography',
       demoBadge: 'DEMO CATALOG',
+      demoVisualBadge: 'Demo Concept Visual',
+      intakeBannerTitle: 'Asset Intake Protocol & Photography Status',
+      intakeBannerDesc:
+        'Displaying editorial demonstration visuals to evaluate composition and visual hierarchy. Official store photography can be deployed into public/products/ anytime to replace placeholders automatically.',
       inquirePrice: 'Inquire price per batch',
       viewDetailBtn: 'View Details',
       view3DBtn: 'Switch to 3D',
@@ -493,8 +544,8 @@ export const translations: Record<Language, Translations> = {
       intakeGuide: 'Place real product photos into public/products/ to display immediately',
     },
     detailStage: {
-      sectionEyebrow: 'PRODUCT FOCUS & 3D STUDIO',
-      sectionTitle: 'Pastry Anatomy & 3D Showcase',
+      sectionEyebrow: 'ARTISAN PRODUCT GALLERY',
+      sectionTitle: 'Pastry Anatomy & Visual Showcase',
       view3DLabel: '3D INTERACTIVE VIEW',
       viewPhotoLabel: 'PRODUCT PHOTO GALLERY',
       noGLBNotice:
@@ -508,17 +559,38 @@ export const translations: Record<Language, Translations> = {
       verificationDesc:
         'This product description and mock specs are provided as an editorial prototype layout. They can be updated seamlessly once verified bakery data is supplied.',
     },
+    dev3D: {
+      sectionEyebrow: '3D LAB & ASSET PIPELINE',
+      sectionTitle: 'WebGL 3D Engine (Developer Preview)',
+      sectionSubtitle:
+        'Internal technology evaluation stage for engineering & management — Demonstrating real-time 3D PBR asset streaming, Draco decompression, and 360° product inspection.',
+      benchmarkBadge: 'BENCHMARK ASSET (~85% PHOTOREAL)',
+      benchmarkTitle: 'Canelé de Bordeaux (3D Study)',
+      benchmarkDesc:
+        'Benchmark asset testing Three.js rendering fidelity, WebGL context, OrbitControls, and Draco decompression across devices with zero frame drops.',
+      metricPoly: '63,840 Triangles (1 Draw Call)',
+      metricDraco: 'Draco Decompressed (590 KB)',
+      metricFPS: '60 FPS Hardware Accelerated',
+      metricPBR: '2K PBR Shaders (BaseColor, Normal, ORM)',
+      orbitHint: 'Click and drag to rotate 360° • Scroll wheel to zoom in/out',
+      autoSpinLabel: 'Auto Spin',
+      wireframeLabel: 'Wireframe',
+      resetLabel: 'Reset Camera',
+    },
     facebookFeed: {
       sectionEyebrow: 'LATEST FROM FACEBOOK',
-      sectionTitle: 'Recent Facebook Dispatches',
+      sectionTitle: 'Simulated Facebook Feed (Demo Feed)',
       sectionSubtitle:
-        'Curated post ingestion blueprint from "Chan Chop Klin Noei" page without unauthenticated scraping or client token exposure.',
+        'Curated post ingestion blueprint from "Chan Chop Klin Noei" page without unauthenticated scraping or client token exposure. (Layout evaluation template).',
       curatedBadge: 'CURATED FEED PROTOTYPE',
       curatedDesc:
         'Decoupled data provider ready for Facebook Graph API once page authentication is configured.',
+      demoFeedBadge: 'DEMO FEED • Simulated Ingestion',
+      demoFeedDesc: 'Posts and dates below are simulated layout templates for UI evaluation, not live scraped page content.',
+      simulatedSlot: 'Demo Slot',
       openPostBtn: 'View on Facebook ↗',
       visitPageBtn: 'Visit Official Facebook Page ↗',
-      postedOn: 'Published:',
+      postedOn: 'Simulated Date Slot:',
     },
     about: {
       sectionEyebrow: 'ABOUT THE BAKERY',

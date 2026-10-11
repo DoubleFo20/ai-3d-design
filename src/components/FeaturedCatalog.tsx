@@ -68,7 +68,16 @@ export const FeaturedCatalog: React.FC<FeaturedCatalogProps> = ({
           </button>
         </div>
 
-        {/* Product Grid */}
+        {/* Asset Intake Protocol Editorial Banner */}
+        <div className="catalog-intake-protocol-banner">
+          <div className="protocol-badge-col">
+            <span className="protocol-icon" aria-hidden="true">📸</span>
+            <span className="protocol-badge-title">{t.catalog.intakeBannerTitle}</span>
+          </div>
+          <p className="protocol-desc">{t.catalog.intakeBannerDesc}</p>
+        </div>
+
+        {/* Product Grid (3 Signature Bakery Items) */}
         <div className="catalog-grid">
           {filteredProducts.map((product, index) => {
             const isSelected = product.id === activeProductId
@@ -81,11 +90,11 @@ export const FeaturedCatalog: React.FC<FeaturedCatalogProps> = ({
                 <div className="card-top-bar">
                   <span className="card-num">0{index + 1}</span>
                   <span className="card-status-badge">
-                    {product.glbPath ? '3D GLB READY' : t.catalog.demoBadge}
+                    {t.catalog.demoBadge}
                   </span>
                 </div>
 
-                {/* Product Photo Showcase / Intake Slot */}
+                {/* Product Photo Showcase */}
                 <div
                   className="card-media-stage"
                   onClick={() => onSelectProduct(product)}
@@ -98,13 +107,26 @@ export const FeaturedCatalog: React.FC<FeaturedCatalogProps> = ({
                   }}
                   aria-label={`Select ${product.name[lang]}`}
                 >
-                  {product.hasRealPhoto ? (
-                    <img
-                      src={product.images[0]}
-                      alt={product.name[lang]}
-                      className="card-photo"
-                      loading="lazy"
-                    />
+                  {product.images && product.images[0] ? (
+                    <div className="card-photo-wrapper">
+                      <img
+                        src={product.images[0]}
+                        alt={product.name[lang]}
+                        className="card-photo"
+                        loading="lazy"
+                      />
+                      {product.isDemoVisual && (
+                        <div className="card-demo-visual-tag">
+                          <span className="dot-mini" aria-hidden="true" />
+                          <span>{t.catalog.demoVisualBadge}</span>
+                        </div>
+                      )}
+                      <div className="card-hover-overlay">
+                        <span className="hover-cta-label">
+                          {lang === 'th' ? 'คลิกเพื่อดูรายละเอียดและภาพขยาย ↗' : 'Click to inspect in gallery ↗'}
+                        </span>
+                      </div>
+                    </div>
                   ) : (
                     <div className="photo-intake-slot">
                       <div className="intake-camera-icon" aria-hidden="true">
@@ -118,13 +140,6 @@ export const FeaturedCatalog: React.FC<FeaturedCatalogProps> = ({
                       </span>
                       <span className="intake-slot-file">{product.intakeSlotPath}</span>
                     </div>
-                  )}
-
-                  {/* 3D Model Badge indicator if GLB is attached */}
-                  {product.glbPath && (
-                    <span className="glb-pill-indicator">
-                      ✦ {lang === 'th' ? 'พร้อมหมุน 3D' : '3D Orbit Available'}
-                    </span>
                   )}
                 </div>
 

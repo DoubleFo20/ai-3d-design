@@ -45,12 +45,28 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <div className="modal-content-grid">
           {/* Visual column */}
           <div className="modal-media-col">
-            {product.hasRealPhoto ? (
-              <img
-                src={product.images[0]}
-                alt={product.name[lang]}
-                className="modal-img"
-              />
+            {product.images && product.images[0] ? (
+              <div className="modal-photo-wrap">
+                <img
+                  src={product.images[0]}
+                  alt={product.name[lang]}
+                  className="modal-img"
+                />
+                {product.isDemoVisual && (
+                  <div className="modal-demo-tag">
+                    <span className="dot-mini" aria-hidden="true" />
+                    <span>
+                      {lang === 'th'
+                        ? 'ภาพจำลองแนวคิด (Demo Visual)'
+                        : 'Demo Concept Visual'}
+                    </span>
+                  </div>
+                )}
+                <div className="modal-intake-reference">
+                  <span className="ref-label">{lang === 'th' ? 'ช่องรับภาพถ่ายจริง:' : 'Official intake slot:'}</span>
+                  <code className="ref-path">{product.intakeSlotPath}</code>
+                </div>
+              </div>
             ) : (
               <div className="modal-intake-card">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

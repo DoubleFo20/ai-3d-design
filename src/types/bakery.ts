@@ -26,6 +26,7 @@ export interface ProductItem {
    */
   images: string[]
   hasRealPhoto: boolean
+  isDemoVisual?: boolean
   intakeSlotPath: string
   price: number | null
   priceDisplayNote?: LocalizedString
